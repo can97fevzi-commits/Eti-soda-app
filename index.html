@@ -3,373 +3,438 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ETİ SODA – Ekipman Dokümantasyon Arşivi</title>
+<title>ETİ SODA – Ekipman Arşivi</title>
 <style>
 :root {
-  --orange:      #E8630A;
-  --orange-dk:   #C45208;
-  --orange-lt:   rgba(232,99,10,.08);
-  --navy:        #1B3A6B;
-  --navy-lt:     #2a4a7f;
-  --bg:          #F0F4F8;
-  --card:        #FFFFFF;
-  --border:      #E2E8F0;
-  --text:        #1A202C;
-  --muted:       #718096;
-  --green:       #38A169;
-  --red:         #E53E3E;
-  --blue:        #3182CE;
-  --r:           10px;
-  --sh:          0 2px 8px rgba(0,0,0,.10);
-  --sh-lg:       0 8px 24px rgba(0,0,0,.15);
-  --sidebar-w:   230px;
+  --org:     #E8630A;
+  --org-dk:  #C45208;
+  --org-lt:  rgba(232,99,10,.09);
+  --nvy:     #1B3A6B;
+  --nvy-2:   #243f72;
+  --bg:      #EEF2F7;
+  --card:    #FFFFFF;
+  --bdr:     #DDE3EC;
+  --txt:     #1A202C;
+  --mut:     #64748B;
+  --grn:     #16A34A;
+  --red:     #DC2626;
+  --blu:     #2563EB;
+  --r6:6px; --r10:10px;
+  --sh:    0 1px 4px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.05);
+  --sh-lg: 0 4px 16px rgba(0,0,0,.10), 0 16px 40px rgba(0,0,0,.10);
+  --tw: 260px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow:hidden}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
-  background:var(--bg);color:var(--text);display:flex;flex-direction:column}
+  background:var(--bg);color:var(--txt);display:flex;flex-direction:column}
 
-/* ── HEADER ─────────────────────────────────────────────── */
-.hdr{
-  background:linear-gradient(135deg,var(--navy) 0%,#0f2347 100%);
-  color:#fff;height:62px;padding:0 20px;
+/* ── HEADER ─────────────────────────────────────── */
+.hdr{background:linear-gradient(135deg,var(--nvy) 0%,#0d2249 100%);
+  color:#fff;height:60px;padding:0 18px;
   display:flex;align-items:center;justify-content:space-between;
-  box-shadow:var(--sh-lg);flex-shrink:0;z-index:100;
-}
-.hdr-brand{display:flex;align-items:center;gap:12px}
-.hdr-logo{
-  width:40px;height:40px;background:var(--orange);border-radius:8px;
+  box-shadow:0 2px 10px rgba(0,0,0,.28);flex-shrink:0;z-index:100}
+.hdr-l{display:flex;align-items:center;gap:12px}
+.logo{width:38px;height:38px;background:var(--org);border-radius:8px;
   display:flex;align-items:center;justify-content:center;
-  font-weight:900;font-size:15px;letter-spacing:-1px;color:#fff;flex-shrink:0;
-}
-.hdr-title h1{font-size:17px;font-weight:700;letter-spacing:.4px}
-.hdr-title small{font-size:11px;opacity:.65;letter-spacing:.2px}
-.hdr-stats{display:flex;gap:24px}
-.stat{text-align:center}
-.stat-v{font-size:22px;font-weight:800;color:var(--orange);line-height:1}
-.stat-l{font-size:10px;opacity:.65;margin-top:2px;letter-spacing:.5px;text-transform:uppercase}
+  font-weight:900;font-size:13px;letter-spacing:-.5px;color:#fff;flex-shrink:0}
+.brand h1{font-size:16px;font-weight:700;letter-spacing:.3px}
+.brand small{font-size:11px;opacity:.58}
+.hdr-stats{display:flex;gap:22px}
+.stat .v{font-size:20px;font-weight:800;color:var(--org);line-height:1}
+.stat .l{font-size:10px;opacity:.58;text-transform:uppercase;letter-spacing:.5px}
+.hdr-r{display:flex;gap:8px}
 
-/* ── TOOLBAR ─────────────────────────────────────────────── */
-.toolbar{
-  background:#fff;border-bottom:1px solid var(--border);
-  padding:10px 20px;display:flex;align-items:center;gap:10px;
-  flex-shrink:0;z-index:90;box-shadow:0 2px 4px rgba(0,0,0,.04);
-}
-.search-wrap{position:relative;flex:1;max-width:460px}
-.search-wrap svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);
-  opacity:.4;pointer-events:none}
-.search-inp{
-  width:100%;padding:9px 12px 9px 36px;border:2px solid var(--border);
-  border-radius:8px;font-size:13px;outline:none;background:var(--bg);transition:all .2s;
-}
-.search-inp:focus{border-color:var(--orange);background:#fff}
-.tag-pills{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;flex:1}
-.tag-pills::-webkit-scrollbar{display:none}
-.pill{
-  padding:5px 13px;border-radius:20px;border:2px solid var(--border);
-  background:#fff;font-size:12px;font-weight:600;cursor:pointer;
-  transition:all .15s;white-space:nowrap;font-family:'Courier New',monospace;
-}
-.pill:hover{border-color:var(--orange);color:var(--orange)}
-.pill.on{background:var(--orange);border-color:var(--orange);color:#fff}
+/* ── TOOLBAR ─────────────────────────────────────── */
+.toolbar{background:#fff;border-bottom:1px solid var(--bdr);
+  padding:8px 18px;display:flex;align-items:center;gap:10px;
+  flex-shrink:0;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.srch-box{position:relative;flex:1;max-width:500px}
+.srch-box svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);
+  color:var(--mut);pointer-events:none;flex-shrink:0}
+.srch-inp{width:100%;padding:8px 32px 8px 34px;border:2px solid var(--bdr);
+  border-radius:8px;font-size:13px;outline:none;background:var(--bg);transition:all .2s}
+.srch-inp:focus{border-color:var(--org);background:#fff}
+.srch-clr{position:absolute;right:8px;top:50%;transform:translateY(-50%);
+  background:none;border:none;cursor:pointer;color:var(--mut);font-size:15px;
+  line-height:1;padding:2px;display:none}
+.srch-clr.vis{display:block}
 
-/* ── BUTTONS ─────────────────────────────────────────────── */
-.btn{
-  padding:9px 16px;border-radius:8px;border:none;cursor:pointer;
+/* ── BUTTONS ─────────────────────────────────────── */
+.btn{padding:8px 14px;border-radius:var(--r6);border:none;cursor:pointer;
   font-size:13px;font-weight:600;transition:all .2s;
-  display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
-}
-.btn-pri{background:var(--orange);color:#fff}
-.btn-pri:hover{background:var(--orange-dk);transform:translateY(-1px);
-  box-shadow:0 4px 14px rgba(232,99,10,.4)}
-.btn-sec{background:var(--bg);color:var(--text);border:2px solid var(--border)}
-.btn-sec:hover{border-color:var(--orange);color:var(--orange)}
-.btn-sm{padding:5px 10px;font-size:12px;border-radius:6px}
-.btn-icon{
-  padding:7px;background:transparent;border:none;cursor:pointer;
-  color:var(--muted);border-radius:6px;transition:all .2s;font-size:15px;line-height:1;
-}
-.btn-icon:hover{background:var(--bg);color:var(--orange)}
+  display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.btn-org{background:var(--org);color:#fff}
+.btn-org:hover{background:var(--org-dk);box-shadow:0 3px 10px rgba(232,99,10,.4)}
+.btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.18)}
+.btn-ghost:hover{background:rgba(255,255,255,.22)}
+.btn-sec{background:var(--bg);color:var(--txt);border:1.5px solid var(--bdr)}
+.btn-sec:hover{border-color:var(--org);color:var(--org)}
+.btn-sm{padding:5px 10px;font-size:12px;border-radius:5px}
+.btn-xs{padding:3px 8px;font-size:11px;border-radius:4px}
+.btn-icon{padding:6px;background:transparent;border:none;cursor:pointer;
+  color:var(--mut);border-radius:5px;transition:all .2s;line-height:1;font-size:14px}
+.btn-icon:hover{background:var(--bg);color:var(--org)}
+.btn-del{background:#FEF2F2;color:var(--red);border:1.5px solid #FECACA;
+  padding:5px 10px;font-size:12px;border-radius:5px;font-weight:600;
+  cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:4px}
+.btn-del:hover{background:var(--red);color:#fff}
 
-/* ── BODY LAYOUT ─────────────────────────────────────────── */
-.app-body{display:flex;flex:1;overflow:hidden}
+/* ── LAYOUT ──────────────────────────────────────── */
+.layout{display:flex;flex:1;overflow:hidden}
 
-/* ── SIDEBAR ─────────────────────────────────────────────── */
-.sidebar{
-  width:var(--sidebar-w);background:#fff;border-right:1px solid var(--border);
-  overflow-y:auto;flex-shrink:0;display:flex;flex-direction:column;
-}
-.sidebar-hdr{
-  padding:13px 16px;font-size:10px;font-weight:700;color:var(--muted);
-  text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--border);
-  position:sticky;top:0;background:#fff;z-index:1;
-}
-.sb-item{
-  padding:9px 16px;cursor:pointer;display:flex;align-items:center;
-  justify-content:space-between;transition:all .15s;
-  border-left:3px solid transparent;font-size:13px;
-}
-.sb-item:hover{background:var(--bg);border-left-color:var(--orange)}
-.sb-item.on{background:var(--orange-lt);border-left-color:var(--orange);
-  color:var(--orange);font-weight:600}
-.sb-badge{
-  background:var(--bg);color:var(--muted);border-radius:12px;
-  padding:2px 8px;font-size:11px;font-weight:600;
-}
-.sb-item.on .sb-badge{background:var(--orange);color:#fff}
+/* ── TREE PANEL ──────────────────────────────────── */
+.tree-panel{width:var(--tw);background:#fff;border-right:1px solid var(--bdr);
+  display:flex;flex-direction:column;overflow:hidden;flex-shrink:0}
+.tree-hdr{padding:11px 14px;font-size:10px;font-weight:700;color:var(--mut);
+  text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--bdr);
+  flex-shrink:0}
+.tree-scroll{overflow-y:auto;flex:1;padding-bottom:4px}
+.tree-node{display:flex;align-items:center;min-height:33px;cursor:default;
+  border-left:3px solid transparent;transition:background .12s;position:relative;
+  user-select:none}
+.tree-node:hover{background:var(--bg)}
+.tree-node.sel{background:var(--org-lt);border-left-color:var(--org)}
+.t-arrow{width:20px;flex-shrink:0;text-align:center;font-size:9px;color:var(--mut);
+  padding:9px 0;cursor:pointer;transition:transform .18s}
+.t-arrow.open{transform:rotate(90deg)}
+.t-lbl{flex:1;font-size:13px;padding:8px 2px;white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis;cursor:pointer;min-width:0}
+.tree-node.sel .t-lbl{color:var(--org);font-weight:600}
+.t-code{font-size:10px;color:var(--mut);font-family:'Courier New',monospace;
+  flex-shrink:0;padding-right:4px}
+.t-cnt{background:var(--bg);color:var(--mut);border-radius:10px;
+  padding:1px 7px;font-size:11px;font-weight:600;flex-shrink:0;margin-right:4px}
+.tree-node.sel .t-cnt{background:var(--org);color:#fff}
+.t-add{width:20px;height:20px;background:none;border:1.5px dashed var(--bdr);
+  border-radius:4px;cursor:pointer;color:var(--mut);font-size:13px;
+  display:none;align-items:center;justify-content:center;
+  margin-right:6px;flex-shrink:0;line-height:1;padding:0;transition:all .15s}
+.tree-node:hover .t-add{display:flex}
+.t-add:hover{border-color:var(--org);color:var(--org);background:var(--org-lt)}
+.tree-foot{padding:10px 12px;border-top:1px solid var(--bdr);flex-shrink:0}
 
-/* ── MAIN CONTENT ────────────────────────────────────────── */
-.main{flex:1;overflow-y:auto;padding:20px}
+/* ── MAIN AREA ───────────────────────────────────── */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.main-hdr{padding:10px 20px;border-bottom:1px solid var(--bdr);
+  display:flex;align-items:center;justify-content:space-between;
+  background:#fff;flex-shrink:0;min-height:50px;gap:10px}
+.breadcrumb{display:flex;align-items:center;gap:5px;font-size:13px;min-width:0;flex-wrap:wrap}
+.bc-lnk{color:var(--mut);cursor:pointer;white-space:nowrap}
+.bc-lnk:hover{color:var(--org)}
+.bc-sep{color:var(--bdr);font-size:11px}
+.bc-cur{color:var(--txt);font-weight:600;white-space:nowrap}
+.back-btn{display:flex;align-items:center;gap:5px;background:none;border:none;
+  cursor:pointer;color:var(--mut);font-size:13px;font-weight:500;
+  padding:5px 8px;border-radius:6px;transition:all .15s;flex-shrink:0;white-space:nowrap}
+.back-btn:hover{background:var(--bg);color:var(--org)}
+.main-body{flex:1;overflow-y:auto;padding:20px}
 
-/* ── CARDS GRID ──────────────────────────────────────────── */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px}
-.eq-card{
-  background:var(--card);border-radius:var(--r);box-shadow:var(--sh);
-  overflow:hidden;transition:all .2s;border:1px solid var(--border);
-}
+/* ── CARDS GRID ──────────────────────────────────── */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.eq-card{background:var(--card);border-radius:var(--r10);box-shadow:var(--sh);
+  overflow:hidden;transition:all .2s;border:1px solid var(--bdr);cursor:pointer}
 .eq-card:hover{box-shadow:var(--sh-lg);transform:translateY(-2px)}
+.eq-card-hdr{background:linear-gradient(135deg,var(--nvy) 0%,var(--nvy-2) 100%);
+  padding:11px 14px;display:flex;align-items:center;justify-content:space-between}
+.eq-tag{font-size:17px;font-weight:800;color:#fff;
+  font-family:'Courier New',monospace;letter-spacing:.3px}
+.eq-cat-badge{font-size:10px;color:rgba(255,255,255,.7);
+  background:rgba(255,255,255,.12);border-radius:4px;padding:2px 7px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:120px}
+.eq-card-body{padding:11px 14px}
+.eq-name{font-size:14px;font-weight:600;margin-bottom:7px;line-height:1.3}
+.eq-name.none{color:var(--mut);font-style:italic;font-weight:400;font-size:13px}
 
-.card-hdr{
-  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-lt) 100%);
-  padding:12px 14px;display:flex;align-items:center;justify-content:space-between;
-}
-.card-tag{
-  font-size:18px;font-weight:800;color:#fff;letter-spacing:.5px;
-  font-family:'Courier New',monospace;
-}
-.card-docbadge{
-  background:var(--orange);color:#fff;border-radius:6px;
-  padding:3px 10px;font-size:11px;font-weight:700;
-}
-.card-body{padding:13px 14px}
-.card-name{font-size:14px;font-weight:600;margin-bottom:8px;line-height:1.4}
-.card-name.none{color:var(--muted);font-style:italic;font-weight:400}
+.chips{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.chip{font-size:11px;font-weight:600;border-radius:4px;padding:2px 7px;font-family:'Courier New',monospace}
+.chip-gray{background:var(--bg);color:var(--mut)}
 
-.card-meta{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px}
-.meta-chip{background:var(--bg);border-radius:6px;padding:6px 8px;min-width:0}
-.meta-lbl{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;
+.fault-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.ftag{font-size:11px;background:#FFF7ED;color:#9A3412;
+  border:1px solid #FED7AA;border-radius:20px;padding:2px 9px;font-weight:500}
+
+.eq-foot{border-top:1px solid var(--bdr);padding-top:8px;
+  display:flex;align-items:center;justify-content:space-between}
+.doc-cnt{font-size:12px;color:var(--mut);display:flex;align-items:center;gap:4px}
+
+/* ── DETAIL VIEW ─────────────────────────────────── */
+.detail-wrap{display:flex;gap:18px;align-items:flex-start}
+.detail-info-box{width:310px;flex-shrink:0;background:var(--card);
+  border-radius:var(--r10);box-shadow:var(--sh);border:1px solid var(--bdr);overflow:hidden}
+.dib-hdr{background:linear-gradient(135deg,var(--nvy) 0%,var(--nvy-2) 100%);padding:14px 16px}
+.dib-tag{font-size:22px;font-weight:800;color:#fff;font-family:'Courier New',monospace;margin-bottom:2px}
+.dib-name{font-size:13px;color:rgba(255,255,255,.75)}
+.dib-body{padding:14px 16px}
+.irow{margin-bottom:10px}
+.irow-lbl{font-size:10px;font-weight:700;color:var(--mut);text-transform:uppercase;
   letter-spacing:.5px;margin-bottom:2px}
-.meta-val{
-  font-size:12px;font-weight:600;font-family:'Courier New',monospace;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
+.irow-val{font-size:13px;font-weight:500;font-family:'Courier New',monospace}
+.irow-val.plain{font-family:inherit}
+.dib-actions{padding:12px 16px;border-top:1px solid var(--bdr);display:flex;gap:8px}
 
-.alarm-box{
-  background:rgba(232,99,10,.06);border:1px solid rgba(232,99,10,.22);
-  border-radius:6px;padding:8px 10px;margin-bottom:10px;
-}
-.alarm-ttl{font-size:10px;font-weight:700;color:var(--orange);
-  text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
-.alarm-row{display:flex;justify-content:space-between;font-size:12px;padding:2px 0}
-.alarm-lbl{color:var(--muted)}
-.alarm-hi{font-weight:700;font-family:'Courier New',monospace;color:var(--red)}
-.alarm-lo{font-weight:700;font-family:'Courier New',monospace;color:var(--blue)}
-
-.docs-sec{border-top:1px solid var(--border);padding-top:10px}
-.docs-hdr{
-  font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;
-  letter-spacing:.5px;margin-bottom:8px;display:flex;align-items:center;
-  justify-content:space-between;
-}
-.docs-cnt{background:var(--orange);color:#fff;border-radius:10px;
-  padding:1px 7px;font-size:11px}
-
-.doc-row{
-  display:flex;align-items:center;gap:7px;padding:6px 7px;
-  border-radius:6px;cursor:pointer;transition:all .15s;border:1px solid transparent;
-}
-.doc-row:hover{background:var(--bg);border-color:var(--border)}
-.doc-ico{font-size:17px;flex-shrink:0}
+.detail-docs-box{flex:1;background:var(--card);border-radius:var(--r10);
+  box-shadow:var(--sh);border:1px solid var(--bdr);overflow:hidden;min-width:0}
+.ddb-hdr{padding:12px 16px;border-bottom:1px solid var(--bdr);
+  display:flex;align-items:center;justify-content:space-between;background:#FAFBFC}
+.ddb-ttl{font-size:13px;font-weight:700}
+.doc-row{display:flex;align-items:center;gap:10px;padding:10px 16px;
+  border-bottom:1px solid var(--bdr);cursor:pointer;transition:background .12s}
+.doc-row:last-child{border-bottom:none}
+.doc-row:hover{background:var(--bg)}
+.doc-ico{font-size:20px;flex-shrink:0}
 .doc-inf{flex:1;min-width:0}
-.doc-nm{font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.doc-dt{font-size:11px;color:var(--muted)}
-.doc-acts{opacity:0;transition:opacity .15s;display:flex;gap:2px}
+.doc-nm{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.doc-meta{font-size:11px;color:var(--mut);margin-top:1px}
+.doc-acts{display:flex;gap:2px;opacity:0;transition:.12s}
 .doc-row:hover .doc-acts{opacity:1}
 
-/* ── EMPTY STATE ─────────────────────────────────────────── */
-.empty{text-align:center;padding:80px 40px;color:var(--muted)}
-.empty-ico{font-size:60px;margin-bottom:14px}
-.empty-ttl{font-size:20px;font-weight:600;color:var(--text);margin-bottom:8px}
-.empty-txt{font-size:14px;max-width:380px;margin:0 auto 22px;line-height:1.6}
+/* ── SEARCH RESULTS ──────────────────────────────── */
+.srch-hdr{margin-bottom:14px}
+.srch-hdr h2{font-size:15px;font-weight:700;margin-bottom:3px}
+.srch-hdr p{font-size:12px;color:var(--mut)}
 
-/* ── SEARCH INFO ─────────────────────────────────────────── */
-.search-info{font-size:13px;color:var(--muted);margin-bottom:14px}
+/* ── EMPTY STATE ─────────────────────────────────── */
+.empty{text-align:center;padding:70px 30px;color:var(--mut)}
+.empty-ico{font-size:52px;margin-bottom:12px}
+.empty-ttl{font-size:18px;font-weight:600;color:var(--txt);margin-bottom:7px}
+.empty-txt{font-size:13px;max-width:360px;margin:0 auto 18px;line-height:1.6}
 
-/* ── MODALS ──────────────────────────────────────────────── */
-.overlay{
-  display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;
-  align-items:center;justify-content:center;backdrop-filter:blur(4px);
-}
+/* ── FAULT TAG INPUT ─────────────────────────────── */
+.ftag-wrap{display:flex;flex-wrap:wrap;gap:5px;align-items:center;
+  border:2px solid var(--bdr);border-radius:8px;padding:6px 8px;
+  cursor:text;transition:border-color .2s;min-height:42px}
+.ftag-wrap:focus-within{border-color:var(--org)}
+.ftag-inp{border:none;outline:none;font-size:13px;background:transparent;
+  min-width:130px;flex:1;padding:1px 0}
+.ftag-item{display:inline-flex;align-items:center;gap:4px;
+  background:#FFF7ED;color:#9A3412;border:1px solid #FED7AA;
+  border-radius:20px;padding:2px 8px 2px 10px;font-size:12px;font-weight:500}
+.ftag-x{background:none;border:none;cursor:pointer;color:#9A3412;
+  font-size:14px;line-height:1;padding:0;opacity:.65}
+.ftag-x:hover{opacity:1}
+
+/* ── MODALS ──────────────────────────────────────── */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.52);
+  z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(3px)}
 .overlay.show{display:flex}
-.modal{
-  background:#fff;border-radius:14px;box-shadow:var(--sh-lg);
-  width:90%;max-width:580px;max-height:92vh;overflow:hidden;
-  display:flex;flex-direction:column;
-}
-.modal-hdr{
-  padding:18px 22px 14px;border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;flex-shrink:0;
-}
-.modal-ttl{font-size:17px;font-weight:700}
-.modal-body{padding:22px;overflow-y:auto;flex:1}
-.modal-ftr{
-  padding:14px 22px;border-top:1px solid var(--border);
-  display:flex;justify-content:flex-end;gap:8px;flex-shrink:0;
-}
+.modal{background:#fff;border-radius:14px;box-shadow:var(--sh-lg);
+  width:90%;max-width:560px;max-height:92vh;display:flex;flex-direction:column;overflow:hidden}
+.modal-hdr{padding:16px 20px 12px;border-bottom:1px solid var(--bdr);
+  display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.modal-ttl{font-size:16px;font-weight:700}
+.modal-body{padding:20px;overflow-y:auto;flex:1}
+.modal-ftr{padding:12px 20px;border-top:1px solid var(--bdr);
+  display:flex;justify-content:flex-end;gap:8px;flex-shrink:0}
+
+/* form */
+.frow{margin-bottom:14px}
+.frow label{display:block;font-size:11px;font-weight:700;color:var(--mut);
+  text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+.finp,.fsel{width:100%;padding:9px 11px;border:2px solid var(--bdr);
+  border-radius:7px;font-size:13px;outline:none;background:#fff;
+  transition:border-color .2s;font-family:inherit}
+.finp:focus,.fsel:focus{border-color:var(--org)}
+.f2col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.divider{display:flex;align-items:center;gap:10px;margin:14px 0 10px;
+  font-size:10px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:1px}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--bdr)}
 
 /* upload */
-.drop-zone{
-  border:3px dashed var(--border);border-radius:10px;padding:36px;
-  text-align:center;cursor:pointer;transition:all .2s;background:var(--bg);
-}
-.drop-zone:hover,.drop-zone.over{border-color:var(--orange);background:var(--orange-lt)}
-.drop-ico{font-size:44px;margin-bottom:10px}
-.drop-ttl{font-size:15px;font-weight:600;margin-bottom:5px}
-.drop-sub{font-size:12px;color:var(--muted)}
-
-.upl-list{margin-top:14px;display:flex;flex-direction:column;gap:7px}
-.upl-item{
-  background:var(--bg);border-radius:8px;padding:9px 12px;
-  display:flex;align-items:center;gap:10px;
-}
+.drop-zone{border:3px dashed var(--bdr);border-radius:10px;padding:30px;
+  text-align:center;cursor:pointer;transition:all .2s;background:var(--bg)}
+.drop-zone:hover,.drop-zone.over{border-color:var(--org);background:var(--org-lt)}
+.drop-ico{font-size:38px;margin-bottom:8px}
+.drop-ttl{font-size:14px;font-weight:600;margin-bottom:4px}
+.drop-sub{font-size:12px;color:var(--mut)}
+.upl-list{margin-top:11px;display:flex;flex-direction:column;gap:6px}
+.upl-item{background:var(--bg);border-radius:7px;padding:8px 12px;
+  display:flex;align-items:center;gap:8px}
 .upl-inf{flex:1;min-width:0}
-.upl-nm{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.upl-st{font-size:11px;color:var(--muted);margin-top:2px}
-.prog{height:4px;background:var(--border);border-radius:2px;overflow:hidden;margin-top:4px}
-.prog-fill{height:100%;background:var(--orange);border-radius:2px;transition:width .3s}
+.upl-nm{font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.upl-st{font-size:11px;color:var(--mut)}
+.prog{height:3px;background:var(--bdr);border-radius:2px;overflow:hidden;margin-top:3px}
+.prog-f{height:100%;background:var(--org);border-radius:2px;transition:width .3s}
 
-/* viewer */
-.viewer-modal{max-width:96vw;width:96vw;max-height:95vh;height:95vh}
+/* viewer modal */
+.viewer-modal{max-width:97vw;width:97vw;max-height:96vh;height:96vh}
 .viewer-inner{display:flex;flex:1;overflow:hidden}
-.viewer-pdf{flex:1;background:#525659;position:relative}
+.viewer-pdf{flex:1;background:#525659}
 .viewer-pdf iframe{width:100%;height:100%;border:none;display:block}
-.viewer-side{
-  width:270px;border-left:1px solid var(--border);
-  overflow-y:auto;flex-shrink:0;padding:14px;
-}
-.vs-sec{margin-bottom:18px}
-.vs-sec-ttl{
-  font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;
-  letter-spacing:1px;margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid var(--border);
-}
+.viewer-side{width:260px;border-left:1px solid var(--bdr);overflow-y:auto;padding:14px;flex-shrink:0}
+.vs-sec{margin-bottom:16px}
+.vs-ttl{font-size:10px;font-weight:700;color:var(--mut);text-transform:uppercase;
+  letter-spacing:1px;margin-bottom:7px;padding-bottom:5px;border-bottom:1px solid var(--bdr)}
 .vs-row{margin-bottom:7px}
-.vs-lbl{font-size:10px;color:var(--muted);margin-bottom:1px}
+.vs-lbl{font-size:10px;color:var(--mut);margin-bottom:1px}
 .vs-val{font-size:12px;font-weight:500;font-family:'Courier New',monospace;word-break:break-all}
-.txt-preview{
-  padding:10px;font-size:11px;line-height:1.6;color:var(--text);
-  white-space:pre-wrap;font-family:'Courier New',monospace;background:#f8f9fa;
-  border-radius:6px;max-height:300px;overflow-y:auto;
-}
+.txt-prev{font-size:11px;line-height:1.6;color:var(--txt);white-space:pre-wrap;
+  font-family:'Courier New',monospace;background:#F8FAFC;border-radius:5px;
+  padding:8px;max-height:260px;overflow-y:auto}
 
-/* ── TOAST ───────────────────────────────────────────────── */
-.toast-wrap{position:fixed;bottom:22px;right:22px;z-index:300;
-  display:flex;flex-direction:column;gap:7px;}
-.toast{
-  background:var(--text);color:#fff;padding:11px 15px;border-radius:9px;
+/* ── TOAST ───────────────────────────────────────── */
+.toast-wrap{position:fixed;bottom:20px;right:20px;z-index:300;
+  display:flex;flex-direction:column;gap:6px}
+.toast{background:var(--txt);color:#fff;padding:10px 14px;border-radius:8px;
   font-size:13px;font-weight:500;box-shadow:var(--sh-lg);
-  animation:toastIn .3s ease;max-width:290px;
-  display:flex;align-items:center;gap:8px;
-}
-.toast.ok{background:var(--green)}
+  animation:tin .28s ease;display:flex;align-items:center;gap:7px;max-width:290px}
+.toast.ok{background:var(--grn)}
 .toast.err{background:var(--red)}
-.toast.info{background:var(--navy)}
-@keyframes toastIn{from{transform:translateX(110%);opacity:0}to{transform:translateX(0);opacity:1}}
-
-/* ── SPINNER ─────────────────────────────────────────────── */
-.spin{
-  display:inline-block;width:18px;height:18px;
-  border:3px solid rgba(255,255,255,.3);border-top-color:#fff;
-  border-radius:50%;animation:rot .7s linear infinite;
-}
+.toast.info{background:var(--nvy)}
+@keyframes tin{from{transform:translateX(110%);opacity:0}to{transform:translateX(0);opacity:1}}
+.spin{width:16px;height:16px;border:2.5px solid rgba(255,255,255,.3);
+  border-top-color:#fff;border-radius:50%;animation:rot .7s linear infinite;display:inline-block}
 @keyframes rot{to{transform:rotate(360deg)}}
 
-/* ── SCROLLBAR ───────────────────────────────────────────── */
+/* ── SCROLLBAR ───────────────────────────────────── */
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
-::-webkit-scrollbar-thumb:hover{background:var(--muted)}
+::-webkit-scrollbar-thumb{background:var(--bdr);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--mut)}
 
-/* ── RESPONSIVE ──────────────────────────────────────────── */
 @media(max-width:768px){
-  .sidebar{display:none}
+  .tree-panel{display:none}
   .hdr-stats{display:none}
-  .grid{grid-template-columns:1fr}
+  .detail-wrap{flex-direction:column}
+  .detail-info-box{width:100%}
   .viewer-side{display:none}
   .viewer-modal{max-width:100vw;width:100vw;max-height:100vh;height:100vh;border-radius:0}
+  .f2col{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════ HEADER ══════════════════ -->
+<!-- ═══════════════ HEADER ═══════════════════════════ -->
 <header class="hdr">
-  <div class="hdr-brand">
-    <div class="hdr-logo">ETİ</div>
-    <div class="hdr-title">
+  <div class="hdr-l">
+    <div class="logo">ETİ</div>
+    <div class="brand">
       <h1>ETİ SODA</h1>
       <small>Ekipman Dokümantasyon Arşivi</small>
     </div>
   </div>
   <div class="hdr-stats">
-    <div class="stat"><div class="stat-v" id="sEq">0</div><div class="stat-l">Ekipman</div></div>
-    <div class="stat"><div class="stat-v" id="sDoc">0</div><div class="stat-l">Belge</div></div>
-    <div class="stat"><div class="stat-v" id="sTag">0</div><div class="stat-l">Tag Grubu</div></div>
+    <div class="stat"><div class="v" id="sEq">0</div><div class="l">Ekipman</div></div>
+    <div class="stat"><div class="v" id="sDoc">0</div><div class="l">Belge</div></div>
+    <div class="stat"><div class="v" id="sCat">0</div><div class="l">Kategori</div></div>
   </div>
-  <button class="btn btn-pri" onclick="App.openUpload()">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-    PDF Yükle
-  </button>
+  <div class="hdr-r">
+    <button class="btn btn-ghost" onclick="App.openEquipModal()">+ Ekipman</button>
+    <button class="btn btn-org" onclick="App.openUploadModal()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+        <polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
+      </svg>
+      PDF Yükle
+    </button>
+  </div>
 </header>
 
-<!-- ═══════════════════════════════ TOOLBAR ═════════════════ -->
+<!-- ═══════════════ TOOLBAR ══════════════════════════ -->
 <div class="toolbar">
-  <div class="search-wrap">
+  <div class="srch-box">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
       <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
     </svg>
-    <input class="search-inp" id="searchInp" type="text"
-      placeholder="Ekipman, tag no, model, seri no ara…"
-      oninput="App.search(this.value)">
-  </div>
-  <div class="tag-pills" id="tagPills">
-    <button class="pill on" data-tag="all" onclick="App.filter('all',this)">Tümü</button>
+    <input class="srch-inp" id="srchInp" type="text"
+      placeholder="Tag no, arıza tanımı veya belge içeriğinde ara…"
+      oninput="App.handleSearch(this.value)">
+    <button class="srch-clr" id="srchClr" onclick="App.clearSearch()">✕</button>
   </div>
 </div>
 
-<!-- ═══════════════════════════════ BODY ════════════════════ -->
-<div class="app-body">
-  <aside class="sidebar">
-    <div class="sidebar-hdr">Ekipman Etiketleri</div>
-    <div id="sbList">
-      <div class="sb-item on" data-tag="all" onclick="App.filter('all',this)">
-        <span>Tüm Ekipmanlar</span>
-        <span class="sb-badge" id="sbAllCnt">0</span>
-      </div>
+<!-- ═══════════════ BODY ══════════════════════════════ -->
+<div class="layout">
+
+  <!-- TREE PANEL -->
+  <aside class="tree-panel">
+    <div class="tree-hdr">Kategoriler</div>
+    <div class="tree-scroll" id="treeScroll"></div>
+    <div class="tree-foot">
+      <button class="btn btn-sec btn-sm" style="width:100%" onclick="App.openCatModal(null)">
+        + Yeni Kategori
+      </button>
     </div>
   </aside>
 
-  <main class="main" id="mainArea">
-    <div class="empty" id="emptyState">
-      <div class="empty-ico">📁</div>
-      <div class="empty-ttl">Henüz belge yüklenmemiş</div>
-      <div class="empty-txt">PDF belgelerinizi yükleyin. Sistem ekipman tag numaralarını, model, seri numarası ve alarm değerlerini otomatik olarak çıkarır.</div>
-      <button class="btn btn-pri" onclick="App.openUpload()" style="margin:0 auto">
-        İlk Belgeleri Yükle
-      </button>
-    </div>
-    <div id="searchInfo" class="search-info" style="display:none"></div>
-    <div class="grid" id="cardsGrid" style="display:none"></div>
-  </main>
+  <!-- MAIN -->
+  <div class="main">
+    <div class="main-hdr" id="mainHdr"></div>
+    <div class="main-body" id="mainBody"></div>
+  </div>
 </div>
 
-<!-- ═══════════════════════════════ UPLOAD MODAL ════════════ -->
+<!-- ═══════════════ EQUIP MODAL ══════════════════════ -->
+<div class="overlay" id="equipOverlay">
+  <div class="modal">
+    <div class="modal-hdr">
+      <span class="modal-ttl" id="equipModalTtl">Ekipman Ekle</span>
+      <button class="btn-icon" onclick="App.closeEquipModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="fId">
+      <div class="f2col">
+        <div class="frow">
+          <label>Tag No <span style="color:var(--red)">*</span></label>
+          <input class="finp" id="fTagNo" placeholder="örn: C1104-A">
+        </div>
+        <div class="frow">
+          <label>Kategori <span style="color:var(--red)">*</span></label>
+          <select class="fsel" id="fCatId"></select>
+        </div>
+      </div>
+      <div class="frow">
+        <label>Ekipman Adı</label>
+        <input class="finp" id="fName" placeholder="örn: Kompresör, Pompa, Isı Değiştirici…">
+      </div>
+      <div class="f2col">
+        <div class="frow">
+          <label>Model</label>
+          <input class="finp" id="fModel" placeholder="Model no">
+        </div>
+        <div class="frow">
+          <label>Seri No</label>
+          <input class="finp" id="fSerial" placeholder="Seri numarası">
+        </div>
+      </div>
+      <div class="frow">
+        <label>Arıza Tanımları
+          <span style="font-weight:400;text-transform:none;color:var(--mut)">
+            — yazıp Enter'a basın
+          </span>
+        </label>
+        <div class="ftag-wrap" id="ftagWrap" onclick="document.getElementById('ftagInp').focus()">
+          <input class="ftag-inp" id="ftagInp"
+            placeholder="Arıza yaz, Enter ile ekle…"
+            onkeydown="App.faultKey(event)">
+        </div>
+      </div>
+    </div>
+    <div class="modal-ftr">
+      <button class="btn btn-sec" onclick="App.closeEquipModal()">İptal</button>
+      <button class="btn btn-org" onclick="App.saveEquip()">Kaydet</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ UPLOAD MODAL ═════════════════════ -->
 <div class="overlay" id="uploadOverlay">
   <div class="modal">
     <div class="modal-hdr">
       <span class="modal-ttl">PDF Belge Yükle</span>
-      <button class="btn-icon" onclick="App.closeUpload()">✕</button>
+      <button class="btn-icon" onclick="App.closeUploadModal()">✕</button>
     </div>
     <div class="modal-body">
+      <div class="frow">
+        <label>Ekipman <span style="color:var(--red)">*</span></label>
+        <select class="fsel" id="uplEqSel" onchange="App.onUplEqChange(this.value)"></select>
+      </div>
+      <div class="divider">veya</div>
+      <button class="btn btn-sec btn-sm" style="width:100%;margin-bottom:16px"
+        onclick="App.closeUploadModal();App.openEquipModal()">
+        + Yeni Ekipman Oluştur
+      </button>
       <div class="drop-zone" id="dropZone"
         onclick="document.getElementById('fileInp').click()"
         ondragover="App.dragOver(event)"
@@ -377,708 +442,841 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
         ondrop="App.drop(event)">
         <div class="drop-ico">📄</div>
         <div class="drop-ttl">PDF dosyalarını buraya sürükleyin</div>
-        <div class="drop-sub">veya tıklayarak seçin &nbsp;·&nbsp; Birden fazla dosya desteklenir</div>
+        <div class="drop-sub">veya tıklayarak seçin · Birden fazla dosya desteklenir</div>
         <input type="file" id="fileInp" multiple accept=".pdf,application/pdf"
           style="display:none" onchange="App.fileSelect(event)">
       </div>
       <div class="upl-list" id="uplList"></div>
     </div>
     <div class="modal-ftr">
-      <button class="btn btn-sec" onclick="App.closeUpload()">Kapat</button>
-      <button class="btn btn-pri" id="uplBtn" onclick="App.processQueue()" style="display:none">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-        Yükle ve İşle
+      <button class="btn btn-sec" onclick="App.closeUploadModal()">İptal</button>
+      <button class="btn btn-org" id="uplBtn" onclick="App.processUpload()" style="display:none">
+        Yükle
       </button>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════ VIEWER MODAL ════════════ -->
+<!-- ═══════════════ CATEGORY MODAL ═══════════════════ -->
+<div class="overlay" id="catOverlay">
+  <div class="modal" style="max-width:380px">
+    <div class="modal-hdr">
+      <span class="modal-ttl" id="catModalTtl">Kategori Ekle</span>
+      <button class="btn-icon" onclick="App.closeCatModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="catParentId">
+      <div class="frow">
+        <label>Üst Kategori</label>
+        <div id="catParentLbl" style="font-size:13px;font-weight:600;padding:4px 0;color:var(--mut)"></div>
+      </div>
+      <div class="frow">
+        <label>Kategori Adı <span style="color:var(--red)">*</span></label>
+        <input class="finp" id="catName" placeholder="Kategori adını girin">
+      </div>
+      <div class="frow">
+        <label>Kod <span style="color:var(--mut);font-weight:400;text-transform:none">(isteğe bağlı)</span></label>
+        <input class="finp" id="catCode" placeholder="örn: 1500">
+      </div>
+    </div>
+    <div class="modal-ftr">
+      <button class="btn btn-sec" onclick="App.closeCatModal()">İptal</button>
+      <button class="btn btn-org" onclick="App.saveCat()">Ekle</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ VIEWER MODAL ═════════════════════ -->
 <div class="overlay" id="viewerOverlay">
   <div class="modal viewer-modal">
     <div class="modal-hdr">
-      <span class="modal-ttl" id="viewerTitle" style="font-size:14px;max-width:60%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></span>
-      <div style="display:flex;gap:8px;align-items:center">
-        <button class="btn btn-sec btn-sm" onclick="App.download()">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <span class="modal-ttl" id="viewerTtl"
+        style="font-size:13px;max-width:55%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></span>
+      <div style="display:flex;gap:7px;align-items:center">
+        <button class="btn btn-sec btn-sm" onclick="App.downloadDoc()">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
           İndir
         </button>
         <button class="btn-icon" onclick="App.closeViewer()">✕</button>
       </div>
     </div>
     <div class="viewer-inner">
-      <div class="viewer-pdf"><iframe id="pdfFrame" title="PDF Görüntüleyici"></iframe></div>
+      <div class="viewer-pdf"><iframe id="pdfFrame" title="PDF"></iframe></div>
       <div class="viewer-side" id="viewerSide"></div>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════ TOASTS ══════════════════ -->
 <div class="toast-wrap" id="toastWrap"></div>
 
 <script>
-/* ═══════════════════════════════════════════════════════════
-   IndexedDB  –  persistent storage for docs + PDF blobs
-   ═══════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════
+   DEFAULT CATEGORIES
+   ═══════════════════════════════════════════════════ */
+const DEFAULT_CATS = [
+  {id:'MADEN',    label:'MADEN',             parent:null,     code:null},
+  {id:'PROSES',   label:'PROSES',            parent:null,     code:null},
+  {id:'BRINE',    label:'Brine Arıtma',      parent:'PROSES', code:'1000'},
+  {id:'EVAP',     label:'Evaporasyon',        parent:'PROSES', code:'1100'},
+  {id:'KRIST',    label:'Kristalizasyon',     parent:'PROSES', code:'1200'},
+  {id:'SANT',     label:'Santrifüj & Kurutma',parent:'PROSES', code:'1300'},
+  {id:'BIKARB',   label:'Bikarbonat',         parent:'PROSES', code:'2200'},
+  {id:'DEKA',     label:'Dekahidrat',         parent:'PROSES', code:'3000'},
+  {id:'KOJEN',    label:'KOJENERASYOn',       parent:null,     code:null},
+  {id:'LOJISTIK', label:'LOJİSTİK',           parent:null,     code:null},
+  {id:'DIGER',    label:'DİĞER',              parent:null,     code:null},
+];
+
+/* ═══════════════════════════════════════════════════
+   IndexedDB
+   ═══════════════════════════════════════════════════ */
 const IDB = (() => {
-  const DB  = 'EtiSodaArchive';
-  const VER = 1;
-  let db = null;
+  const NAME='EtiSodaV2', VER=1;
+  let db=null;
 
-  function open() {
-    return new Promise((res, rej) => {
-      const r = indexedDB.open(DB, VER);
-      r.onupgradeneeded = e => {
-        const d = e.target.result;
-        if (!d.objectStoreNames.contains('docs')) {
-          const s = d.createObjectStore('docs', { keyPath: 'id' });
-          s.createIndex('tagNo', 'tagNo');
-        }
-        if (!d.objectStoreNames.contains('blobs'))
-          d.createObjectStore('blobs', { keyPath: 'id' });
+  function open(){
+    return new Promise((res,rej)=>{
+      const r=indexedDB.open(NAME,VER);
+      r.onupgradeneeded=e=>{
+        const d=e.target.result;
+        ['cats','equips','docs','blobs'].forEach(s=>{
+          if(!d.objectStoreNames.contains(s)) d.createObjectStore(s,{keyPath:'id'});
+        });
       };
-      r.onsuccess = e => { db = e.target.result; res(); };
-      r.onerror   = e => rej(e);
+      r.onsuccess=e=>{db=e.target.result;res()};
+      r.onerror=rej;
     });
   }
-
-  function tx(stores, mode, fn) {
-    return new Promise((res, rej) => {
-      const t = db.transaction(stores, mode);
-      t.oncomplete = () => res();
-      t.onerror    = e => rej(e);
-      fn(t);
+  function getAll(s){return new Promise((res,rej)=>{
+    const r=db.transaction(s).objectStore(s).getAll();
+    r.onsuccess=()=>res(r.result||[]); r.onerror=rej;
+  });}
+  function getOne(s,k){return new Promise((res,rej)=>{
+    const r=db.transaction(s).objectStore(s).get(k);
+    r.onsuccess=()=>res(r.result); r.onerror=rej;
+  });}
+  function put(s,obj){return new Promise((res,rej)=>{
+    const t=db.transaction(s,'readwrite');
+    t.objectStore(s).put(obj); t.oncomplete=res; t.onerror=rej;
+  });}
+  function del(stores,id){
+    const arr=Array.isArray(stores)?stores:[stores];
+    return new Promise((res,rej)=>{
+      const t=db.transaction(arr,'readwrite');
+      arr.forEach(s=>t.objectStore(s).delete(id));
+      t.oncomplete=res; t.onerror=rej;
     });
   }
-
-  function get(store, key) {
-    return new Promise((res, rej) => {
-      const r = db.transaction(store).objectStore(store).get(key);
-      r.onsuccess = () => res(r.result);
-      r.onerror   = rej;
-    });
-  }
-
-  function getAll(store) {
-    return new Promise((res, rej) => {
-      const r = db.transaction(store).objectStore(store).getAll();
-      r.onsuccess = () => res(r.result || []);
-      r.onerror   = rej;
-    });
-  }
-
   return {
-    init: open,
-    saveDoc:  doc  => tx('docs',  'readwrite', t => t.objectStore('docs').put(doc)),
-    saveBlob: (id, blob) => tx('blobs','readwrite', t => t.objectStore('blobs').put({ id, blob })),
-    getBlob:  id   => get('blobs', id).then(r => r?.blob),
-    getAllDocs: ()  => getAll('docs'),
-    delDoc:   id   => tx(['docs','blobs'], 'readwrite', t => {
-      t.objectStore('docs').delete(id);
-      t.objectStore('blobs').delete(id);
-    }),
+    init:        ()          => open(),
+    getAllCats:   ()          => getAll('cats'),
+    saveCat:     c           => put('cats',c),
+    delCat:      id          => del('cats',id),
+    getAllEquips: ()          => getAll('equips'),
+    saveEquip:   e           => put('equips',e),
+    delEquip:    id          => del('equips',id),
+    getAllDocs:   ()          => getAll('docs'),
+    saveDoc:     d           => put('docs',d),
+    delDoc:      id          => del(['docs','blobs'],id),
+    saveBlob:    (id,blob)   => put('blobs',{id,blob}),
+    getBlob:     id          => getOne('blobs',id).then(r=>r?.blob),
   };
 })();
 
-/* ═══════════════════════════════════════════════════════════
-   PDF Text Extractor  –  pure JS, no external libs
-   Handles:  BT/ET text blocks, Tj / TJ / ' / " operators,
-             octal escapes, compressed streams (best-effort)
-   ═══════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════
+   PDF Text Extractor  (pure JS, no external libs)
+   ═══════════════════════════════════════════════════ */
 const PDFReader = (() => {
-  function decodePDFStr(s) {
-    return s
-      .replace(/\\n/g, ' ').replace(/\\r/g, ' ').replace(/\\t/g, ' ')
-      .replace(/\\([0-7]{3})/g, (_, o) => String.fromCharCode(parseInt(o, 8)))
-      .replace(/\\\(/g, '(').replace(/\\\)/g, ')').replace(/\\\\/g, '\\');
+  function dec(s){
+    return s.replace(/\\n/g,' ').replace(/\\r/g,' ').replace(/\\t/g,' ')
+      .replace(/\\([0-7]{3})/g,(_,o)=>String.fromCharCode(parseInt(o,8)))
+      .replace(/\\\(/g,'(').replace(/\\\)/g,')').replace(/\\\\/g,'\\');
   }
-
-  function fromBlock(block, out) {
-    // (text) Tj
-    let m, re = /\(([^)]{0,400})\)\s*Tj/g;
-    while ((m = re.exec(block)) !== null) {
-      const s = decodePDFStr(m[1]).trim();
-      if (s) out.push(s);
+  function fromBlock(blk,out){
+    let m,r=/\(([^)]{0,400})\)\s*Tj/g;
+    while((m=r.exec(blk))){const s=dec(m[1]).trim();if(s)out.push(s);}
+    r=/\[([^\]]{0,800})\]\s*TJ/g;
+    while((m=r.exec(blk))){
+      const ri=/\(([^)]{0,200})\)/g;let mi;
+      while((mi=ri.exec(m[1]))){const s=dec(mi[1]).trim();if(s)out.push(s);}
     }
-    // [(text) num …] TJ
-    re = /\[([^\]]{0,800})\]\s*TJ/g;
-    while ((m = re.exec(block)) !== null) {
-      const inner = m[1];
-      const ri = /\(([^)]{0,200})\)/g;
-      let mi;
-      while ((mi = ri.exec(inner)) !== null) {
-        const s = decodePDFStr(mi[1]).trim();
-        if (s) out.push(s);
+  }
+  async function extract(file){
+    const ab=await file.arrayBuffer();
+    const bytes=new Uint8Array(ab);
+    let raw='';
+    for(let i=0;i<bytes.length;i++) raw+=String.fromCharCode(bytes[i]);
+    const out=[];
+    const re=/BT([\s\S]{0,4000}?)ET/g; let m;
+    while((m=re.exec(raw))) fromBlock(m[1],out);
+    if(out.length<5){
+      const rs=/\(([^\)\\]{4,120})\)/g;
+      while((m=rs.exec(raw))){
+        const s=dec(m[1]).trim();
+        if(/[A-Za-z0-9ğüşıöçĞÜŞİÖÇ]{3,}/.test(s)) out.push(s);
       }
     }
-    // (text) '  or  (text) "
-    re = /\(([^)]{0,200})\)\s*['"]/g;
-    while ((m = re.exec(block)) !== null) {
-      const s = decodePDFStr(m[1]).trim();
-      if (s) out.push(s);
-    }
+    const pages=(raw.match(/\/Type\s*\/Page[^s]/g)||[]).length||1;
+    return {text:out.join(' ').replace(/\s+/g,' ').trim(), pages};
   }
-
-  async function extract(file) {
-    const ab = await file.arrayBuffer();
-    const bytes = new Uint8Array(ab);
-
-    // Build latin-1 string (keeps byte values intact for regex)
-    let raw = '';
-    for (let i = 0; i < bytes.length; i++) raw += String.fromCharCode(bytes[i]);
-
-    const out = [];
-
-    // 1. BT … ET blocks
-    const btEt = /BT([\s\S]{0,4000}?)ET/g;
-    let m;
-    while ((m = btEt.exec(raw)) !== null) fromBlock(m[1], out);
-
-    // 2. Fallback: raw string literals (for PDFs without clear BT/ET)
-    if (out.length < 8) {
-      const rs = /\(([^\)\\]{4,120})\)/g;
-      while ((m = rs.exec(raw)) !== null) {
-        const s = decodePDFStr(m[1]).trim();
-        if (/[A-Za-z0-9ğüşıöçĞÜŞİÖÇ]{3,}/.test(s)) out.push(s);
-      }
-    }
-
-    // Count pages via /Type /Page entries (rough)
-    const pages = (raw.match(/\/Type\s*\/Page[^s]/g) || []).length || 1;
-
-    const text = out.join(' ').replace(/\s+/g, ' ').trim();
-    return { text, pages };
-  }
-
-  return { extract };
+  return {extract};
 })();
 
-/* ═══════════════════════════════════════════════════════════
-   Metadata Extractor
-   ═══════════════════════════════════════════════════════════ */
-const MetaX = (() => {
-  function first(text, patterns) {
-    for (const p of patterns) {
-      const m = text.match(p);
-      if (m && m[1]) return m[1].trim().replace(/\s+/g, ' ');
-    }
-    return '';
-  }
-
-  function extract(text, filename) {
-    // ── Tag numbers ──────────────────────────────────────
-    const tagSet = new Set();
-    const tagRe  = /\b([A-Z]{1,4}[-_]?\d{3,5}[A-Z]?)\b/g;
-    let m;
-    while ((m = tagRe.exec(text)) !== null) {
-      const t = m[1].replace(/[-_]/g, '');
-      // Filter: must start with letter(s), have 3-5 digits, meaningful length
-      if (/^[A-Z]{1,4}\d{3,5}[A-Z]?$/.test(t) && t.length >= 4) tagSet.add(t);
-    }
-    // Also parse filename
-    const fTagM = filename.replace('.pdf','').match(/([A-Z]{1,4}[-_]?\d{3,5}[A-Z]?)/i);
-    if (fTagM) tagSet.add(fTagM[1].toUpperCase().replace(/[-_]/g,''));
-
-    const tagNos = [...tagSet];
-    const primaryTag = tagNos[0] || null;
-
-    // ── Equipment name ────────────────────────────────────
-    const equipmentName = first(text, [
-      /(?:ekipman\s*ad[ıi]|equipment\s*name|tag\s*description|description)[\s:]+([^\n\r]{3,60})/i,
-      /(?:cihaz\s*ad[ıi]|instrument\s*(?:description|name))[\s:]+([^\n\r]{3,60})/i,
-    ]);
-
-    // ── Model ─────────────────────────────────────────────
-    const model = first(text, [
-      /(?:model\s*no|model\s*numaras[ıi]|model\s*number)[\s.:]+([A-Z0-9][A-Z0-9\-_ /]{2,35})/i,
-      /\bmodel[\s.:]+([A-Z0-9][A-Z0-9\-_ /]{2,35})/i,
-      /(?:type|tip|ürün\s*kodu|part\s*no|catalog\s*no|katalog\s*no)[\s.:]+([A-Z0-9][A-Z0-9\-_ /]{2,35})/i,
-    ]);
-
-    // ── Serial number ─────────────────────────────────────
-    const serialNo = first(text, [
-      /(?:seri\s*no|serial\s*no(?:\.|\s|:)|serial\s*number|s\/n\s*[:.]|sn\s*[:.])\s*([A-Z0-9][A-Z0-9\- ]{2,30})/i,
-      /(?:üretim\s*no|manufacturing\s*no|fab\s*no)[\s.:]+([A-Z0-9][A-Z0-9\- ]{2,30})/i,
-    ]);
-
-    // ── Manufacturer ─────────────────────────────────────
-    const manufacturer = first(text, [
-      /(?:manufacturer|üretici|marka|make|brand)[\s.:]+([^\n\r]{2,40})/i,
-      /(?:manufactured\s*by|üretim\s*yeri)[\s.:]+([^\n\r]{2,40})/i,
-    ]);
-
-    // ── Alarm values ──────────────────────────────────────
-    const alarmHH = first(text, [
-      /(?:high\s*high\s*alarm|alarm\s*hh|hihi\s*alarm|HH\s*alarm|çok\s*yüksek\s*alarm)[\s.:=]+([+-]?\d+\.?\d*\s*[°°%a-zA-Z/]{0,10})/i,
-      /\bHH\s*[:=]\s*([+-]?\d+\.?\d*)/,
-    ]);
-    const alarmH = first(text, [
-      /(?:high\s*alarm|alarm\s*high|h\.alarm|üst\s*alarm|yüksek\s*alarm)[\s.:=]+([+-]?\d+\.?\d*\s*[°°%a-zA-Z/]{0,10})/i,
-      /\bHA\s*[:=]\s*([+-]?\d+\.?\d*)/,
-    ]);
-    const alarmL = first(text, [
-      /(?:low\s*alarm|alarm\s*low|l\.alarm|alt\s*alarm|düşük\s*alarm)[\s.:=]+([+-]?\d+\.?\d*\s*[°°%a-zA-Z/]{0,10})/i,
-      /\bLA\s*[:=]\s*([+-]?\d+\.?\d*)/,
-    ]);
-    const alarmLL = first(text, [
-      /(?:low\s*low\s*alarm|alarm\s*ll|lolo\s*alarm|LL\s*alarm|çok\s*düşük\s*alarm)[\s.:=]+([+-]?\d+\.?\d*\s*[°°%a-zA-Z/]{0,10})/i,
-      /\bLL\s*[:=]\s*([+-]?\d+\.?\d*)/,
-    ]);
-    const setpoint = first(text, [
-      /(?:set\s*point|setpoint|ayar\s*noktas[ıi])\s*[:=]\s*([+-]?\d+\.?\d*\s*[°°%a-zA-Z/]{0,10})/i,
-      /\bSP\s*[:=]\s*([+-]?\d+\.?\d*)/,
-    ]);
-    const range = first(text, [
-      /(?:range|ölçüm\s*aral[ığıi]+|measuring\s*range|span)[\s.:]+([^\n\r]{2,40})/i,
-    ]);
-    const unit = first(text, [
-      /(?:unit|birim|ölçü\s*birimi|engineering\s*unit)[\s.:]+([^\n\r]{1,20})/i,
-    ]);
-
-    return { tagNos, primaryTag, equipmentName, model, serialNo, manufacturer,
-             alarmHH, alarmH, alarmL, alarmLL, setpoint, range, unit };
-  }
-
-  return { extract };
-})();
-
-/* ═══════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════
    Utilities
-   ═══════════════════════════════════════════════════════════ */
-function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 9); }
-function esc(s) {
-  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-function fmtDate(iso) {
-  if (!iso) return '–';
-  return new Date(iso).toLocaleDateString('tr-TR',{day:'2-digit',month:'2-digit',year:'numeric'});
-}
-function fmtSize(b) {
-  if (!b) return '–';
-  if (b < 1024) return b + ' B';
-  if (b < 1048576) return (b/1024).toFixed(1) + ' KB';
-  return (b/1048576).toFixed(1) + ' MB';
-}
-function toast(msg, type='info') {
-  const wrap = document.getElementById('toastWrap');
-  const el   = document.createElement('div');
-  el.className = 'toast ' + (type==='success'?'ok':type==='error'?'err':'info');
-  const icons = { ok:'✅', err:'❌', info:'ℹ️' };
-  el.innerHTML = `<span>${icons[el.className.split(' ')[1]]||''}</span> ${esc(msg)}`;
-  wrap.appendChild(el);
-  setTimeout(() => { el.style.animation='toastIn .3s ease reverse'; setTimeout(()=>el.remove(),300); }, 3000);
+   ═══════════════════════════════════════════════════ */
+const uid  = ()   => Date.now().toString(36)+Math.random().toString(36).slice(2,9);
+const esc  = s    => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const fmtD = iso  => iso ? new Date(iso).toLocaleDateString('tr-TR',{day:'2-digit',month:'2-digit',year:'numeric'}) : '–';
+const fmtS = b    => !b?'–':b<1024?b+' B':b<1048576?(b/1024).toFixed(1)+' KB':(b/1048576).toFixed(1)+' MB';
+
+function toast(msg,type='info'){
+  const w=document.getElementById('toastWrap');
+  const el=document.createElement('div');
+  el.className='toast '+(type==='success'?'ok':type==='error'?'err':'info');
+  const ic={ok:'✅',err:'❌',info:'ℹ️'};
+  el.innerHTML=`<span>${ic[el.className.split(' ')[1]]||''}</span>${esc(msg)}`;
+  w.appendChild(el);
+  setTimeout(()=>{el.style.animation='tin .28s ease reverse';setTimeout(()=>el.remove(),280);},3300);
 }
 
-/* ═══════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════
+   Category Helpers
+   ═══════════════════════════════════════════════════ */
+function buildTree(cats){
+  const map={},roots=[];
+  cats.forEach(c=>map[c.id]={...c,_ch:[]});
+  cats.forEach(c=>{
+    if(c.parent&&map[c.parent]) map[c.parent]._ch.push(map[c.id]);
+    else if(!c.parent) roots.push(map[c.id]);
+  });
+  return {map,roots};
+}
+
+function getDescendants(catId,cats){
+  const ids=[];
+  cats.filter(c=>c.parent===catId).forEach(c=>{ids.push(c.id);ids.push(...getDescendants(c.id,cats));});
+  return ids;
+}
+
+function getCatPath(catId,cats){
+  const path=[];
+  let cur=cats.find(c=>c.id===catId);
+  while(cur){path.unshift(cur);cur=cur.parent?cats.find(c=>c.id===cur.parent):null;}
+  return path;
+}
+
+function eqCount(catId,cats,equips){
+  const ids=[catId,...getDescendants(catId,cats)];
+  return equips.filter(e=>ids.includes(e.catId)).length;
+}
+
+/* ═══════════════════════════════════════════════════
    Application State
-   ═══════════════════════════════════════════════════════════ */
-const State = {
-  docs:     [],   // all document metadata objects
-  eqs:      {},   // { tagNo: { tagNo, name, model, …, docs:[id…] } }
-  filter:   'all',
-  query:    '',
-  queue:    [],   // pending upload items { id, file, status }
-  viewDocId: null,
-  blobUrl:   null,
-
-  buildEqs() {
-    this.eqs = {};
-    for (const doc of this.docs) {
-      const tag = doc.tagNo || 'GENEL';
-      if (!this.eqs[tag]) this.eqs[tag] = {
-        tagNo: tag, name:'', model:'', serialNo:'', manufacturer:'',
-        alarmHH:'', alarmH:'', alarmL:'', alarmLL:'', docs:[],
-      };
-      const eq = this.eqs[tag];
-      const m  = doc.metadata || {};
-      if (!eq.name         && m.equipmentName) eq.name         = m.equipmentName;
-      if (!eq.model        && m.model)         eq.model        = m.model;
-      if (!eq.serialNo     && m.serialNo)      eq.serialNo     = m.serialNo;
-      if (!eq.manufacturer && m.manufacturer)  eq.manufacturer = m.manufacturer;
-      if (!eq.alarmHH      && m.alarmHH)       eq.alarmHH      = m.alarmHH;
-      if (!eq.alarmH       && m.alarmH)        eq.alarmH       = m.alarmH;
-      if (!eq.alarmL       && m.alarmL)        eq.alarmL       = m.alarmL;
-      if (!eq.alarmLL      && m.alarmLL)       eq.alarmLL      = m.alarmLL;
-      eq.docs.push(doc.id);
-    }
-  },
+   ═══════════════════════════════════════════════════ */
+const S={
+  cats:[],equips:[],docs:[],
+  catId:null,       // selected category (null = all)
+  eqId:null,        // selected equipment
+  view:'cards',     // 'cards' | 'detail' | 'search'
+  query:'',
+  openCats:new Set(['PROSES']),
+  blobUrl:null,
+  viewDocId:null,
+  uploadEqId:null,
+  uploadQueue:[],
+  pendingFaults:[],
 };
 
-/* ═══════════════════════════════════════════════════════════
-   Render
-   ═══════════════════════════════════════════════════════════ */
-function renderAll() {
-  State.buildEqs();
-  renderStats();
-  renderSidebar();
-  renderPills();
-  renderCards();
+/* ═══════════════════════════════════════════════════
+   Render: Stats
+   ═══════════════════════════════════════════════════ */
+function updateStats(){
+  document.getElementById('sEq').textContent  = S.equips.length;
+  document.getElementById('sDoc').textContent = S.docs.length;
+  document.getElementById('sCat').textContent = S.cats.length;
 }
 
-function renderStats() {
-  const eqCnt  = Object.keys(State.eqs).length;
-  const docCnt = State.docs.length;
-  document.getElementById('sEq').textContent  = eqCnt;
-  document.getElementById('sDoc').textContent = docCnt;
-  document.getElementById('sTag').textContent = eqCnt;
-  const sbAll = document.getElementById('sbAllCnt');
-  if (sbAll) sbAll.textContent = eqCnt;
+/* ═══════════════════════════════════════════════════
+   Render: Tree
+   ═══════════════════════════════════════════════════ */
+function renderTree(){
+  const {roots,map}=buildTree(S.cats);
+  document.getElementById('treeScroll').innerHTML=roots.map(n=>treeNodeHTML(n,0,map)).join('');
 }
 
-function renderSidebar() {
-  const tags = Object.keys(State.eqs).sort();
-  let html = `
-    <div class="sb-item ${State.filter==='all'?'on':''}" data-tag="all" onclick="App.filter('all',this)">
-      <span>Tüm Ekipmanlar</span>
-      <span class="sb-badge" id="sbAllCnt">${tags.length}</span>
-    </div>`;
-  for (const tag of tags) {
-    html += `
-      <div class="sb-item ${State.filter===tag?'on':''}" data-tag="${tag}" onclick="App.filter('${tag}',this)">
-        <span>${tag}</span>
-        <span class="sb-badge">${State.eqs[tag].docs.length}</span>
-      </div>`;
-  }
-  document.getElementById('sbList').innerHTML = html;
+function treeNodeHTML(node,depth,map){
+  const hasKids = node._ch.length>0;
+  const isOpen  = S.openCats.has(node.id);
+  const isSel   = S.catId===node.id && S.view!=='search';
+  const cnt     = eqCount(node.id,S.cats,S.equips);
+  const indent  = 10+depth*16;
+
+  const kids = isOpen&&hasKids
+    ? node._ch.map(c=>treeNodeHTML(map[c.id],depth+1,map)).join('')
+    : '';
+
+  return `<div class="tree-node ${isSel?'sel':''}" style="padding-left:${indent}px">
+    <span class="t-arrow ${isOpen&&hasKids?'open':''}"
+      onclick="event.stopPropagation();App.toggleCat('${node.id}')">
+      ${hasKids?'▶':'&nbsp;'}
+    </span>
+    <span class="t-lbl" onclick="App.selectCat('${node.id}')">${esc(node.label)}</span>
+    ${node.code?`<span class="t-code">${node.code}</span>`:''}
+    ${cnt>0?`<span class="t-cnt">${cnt}</span>`:''}
+    <button class="t-add" onclick="event.stopPropagation();App.openCatModal('${node.id}')"
+      title="Alt kategori ekle">+</button>
+  </div>${kids}`;
 }
 
-function renderPills() {
-  const tags = Object.keys(State.eqs).sort();
-  let html = `<button class="pill ${State.filter==='all'?'on':''}" data-tag="all" onclick="App.filter('all',this)">Tümü</button>`;
-  for (const tag of tags) {
-    html += `<button class="pill ${State.filter===tag?'on':''}" data-tag="${tag}" onclick="App.filter('${tag}',this)">${tag}</button>`;
-  }
-  document.getElementById('tagPills').innerHTML = html;
-}
+/* ═══════════════════════════════════════════════════
+   Render: Main Header (breadcrumb / back)
+   ═══════════════════════════════════════════════════ */
+function renderMainHdr(){
+  const hdr=document.getElementById('mainHdr');
 
-function renderCards() {
-  const grid     = document.getElementById('cardsGrid');
-  const empty    = document.getElementById('emptyState');
-  const srchInfo = document.getElementById('searchInfo');
-  const q        = State.query.toLowerCase().trim();
-
-  let eqs = Object.values(State.eqs);
-
-  if (State.filter !== 'all') eqs = eqs.filter(e => e.tagNo === State.filter);
-
-  if (q) {
-    eqs = eqs.filter(eq => {
-      const docs = eq.docs.map(id => State.docs.find(d => d.id===id)).filter(Boolean);
-      return eq.tagNo.toLowerCase().includes(q)
-        || eq.name.toLowerCase().includes(q)
-        || eq.model.toLowerCase().includes(q)
-        || eq.serialNo.toLowerCase().includes(q)
-        || eq.manufacturer.toLowerCase().includes(q)
-        || docs.some(d => d.filename?.toLowerCase().includes(q) || d.textContent?.toLowerCase().includes(q));
-    });
-    srchInfo.style.display = 'block';
-    srchInfo.textContent = `"${State.query}" için ${eqs.length} ekipman bulundu`;
-  } else {
-    srchInfo.style.display = 'none';
-  }
-
-  eqs.sort((a,b) => a.tagNo.localeCompare(b.tagNo));
-
-  if (State.docs.length === 0) {
-    empty.style.display = 'block'; grid.style.display = 'none'; return;
-  }
-  empty.style.display = 'none'; grid.style.display = 'grid';
-
-  if (eqs.length === 0) {
-    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:60px;color:var(--muted)">
-      <div style="font-size:44px;margin-bottom:12px">🔍</div>
-      <div style="font-size:17px;font-weight:600">Sonuç bulunamadı</div>
-      <div style="font-size:13px;margin-top:6px">Farklı arama kriterleri deneyin</div>
+  if(S.view==='search'){
+    hdr.innerHTML=`<div class="breadcrumb">
+      <span class="bc-lnk" onclick="App.clearSearch()">Tümü</span>
+      <span class="bc-sep">›</span>
+      <span class="bc-cur">Arama Sonuçları</span>
     </div>`;
     return;
   }
 
-  grid.innerHTML = eqs.map(eq => cardHTML(eq)).join('');
-}
-
-function cardHTML(eq) {
-  const docs = eq.docs.map(id => State.docs.find(d => d.id===id)).filter(Boolean);
-
-  const metaChips = [
-    eq.model        ? metaChip('Model',   eq.model)        : '',
-    eq.serialNo     ? metaChip('Seri No', eq.serialNo)     : '',
-    eq.manufacturer ? metaChip('Üretici', eq.manufacturer) : '',
-  ].filter(Boolean).join('');
-
-  const hasAlarm = eq.alarmHH || eq.alarmH || eq.alarmL || eq.alarmLL;
-  const alarmBox = hasAlarm ? `
-    <div class="alarm-box">
-      <div class="alarm-ttl">⚠ Alarm Değerleri</div>
-      ${eq.alarmHH ? `<div class="alarm-row"><span class="alarm-lbl">HH Alarm</span><span class="alarm-hi">${esc(eq.alarmHH)}</span></div>` : ''}
-      ${eq.alarmH  ? `<div class="alarm-row"><span class="alarm-lbl">Yüksek Alarm</span><span class="alarm-hi">${esc(eq.alarmH)}</span></div>` : ''}
-      ${eq.alarmL  ? `<div class="alarm-row"><span class="alarm-lbl">Düşük Alarm</span><span class="alarm-lo">${esc(eq.alarmL)}</span></div>` : ''}
-      ${eq.alarmLL ? `<div class="alarm-row"><span class="alarm-lbl">LL Alarm</span><span class="alarm-lo">${esc(eq.alarmLL)}</span></div>` : ''}
-    </div>` : '';
-
-  const docRows = docs.map(doc => `
-    <div class="doc-row" onclick="App.openDoc('${doc.id}')">
-      <span class="doc-ico">📄</span>
-      <div class="doc-inf">
-        <div class="doc-nm" title="${esc(doc.filename)}">${esc(doc.filename)}</div>
-        <div class="doc-dt">${fmtDate(doc.uploadDate)} &nbsp;·&nbsp; ${doc.pages||1} sayfa &nbsp;·&nbsp; ${fmtSize(doc.size)}</div>
-      </div>
-      <div class="doc-acts">
-        <button class="btn-icon" style="font-size:13px"
-          onclick="event.stopPropagation();App.delDoc('${doc.id}')" title="Sili">🗑</button>
-      </div>
-    </div>`).join('');
-
-  return `
-    <div class="eq-card" id="card-${eq.tagNo}">
-      <div class="card-hdr">
-        <span class="card-tag">${esc(eq.tagNo)}</span>
-        <span class="card-docbadge">${docs.length} Belge</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name${eq.name?'':' none'}">${eq.name ? esc(eq.name) : 'İsim belirtilmemiş'}</div>
-        ${metaChips ? `<div class="card-meta">${metaChips}</div>` : ''}
-        ${alarmBox}
-        <div class="docs-sec">
-          <div class="docs-hdr">
-            <span>Belgeler</span>
-            <span class="docs-cnt">${docs.length}</span>
-          </div>
-          ${docRows}
+  if(S.view==='detail'){
+    const eq=S.equips.find(e=>e.id===S.eqId);
+    hdr.innerHTML=`
+      <div style="display:flex;align-items:center;gap:6px;min-width:0">
+        <button class="back-btn" onclick="App.back()">← Geri</button>
+        <div class="breadcrumb">${catBC(eq?.catId)}
+          ${eq?`<span class="bc-sep">›</span><span class="bc-cur">${esc(eq.tagNo)}</span>`:''}
         </div>
       </div>
-    </div>`;
+      <div style="display:flex;gap:7px;flex-shrink:0">
+        <button class="btn btn-sec btn-sm" onclick="App.openEquipModal('${S.eqId}')">✏ Düzenle</button>
+        <button class="btn-del" onclick="App.deleteEquip('${S.eqId}')">🗑 Sil</button>
+      </div>`;
+    return;
+  }
+
+  // cards view
+  const addBtn=`<button class="btn btn-org btn-sm" onclick="App.openEquipModal(null,'${S.catId||''}')">+ Ekipman Ekle</button>`;
+  if(S.catId){
+    hdr.innerHTML=`<div class="breadcrumb">${catBC(S.catId,true)}</div>${addBtn}`;
+  } else {
+    hdr.innerHTML=`<div class="breadcrumb"><span class="bc-cur">Tüm Ekipmanlar</span></div>${addBtn}`;
+  }
 }
 
-function metaChip(lbl, val) {
-  return `<div class="meta-chip">
-    <div class="meta-lbl">${lbl}</div>
-    <div class="meta-val" title="${esc(val)}">${esc(val)}</div>
+function catBC(catId,showLast){
+  if(!catId) return '';
+  const path=getCatPath(catId,S.cats);
+  return path.map((c,i)=>{
+    const isLast=i===path.length-1;
+    const sep=i>0?'<span class="bc-sep">›</span>':'';
+    if(isLast&&showLast) return sep+`<span class="bc-cur">${esc(c.label)}</span>`;
+    return sep+`<span class="bc-lnk" onclick="App.selectCat('${c.id}')">${esc(c.label)}</span>`;
+  }).join('');
+}
+
+/* ═══════════════════════════════════════════════════
+   Render: Cards View
+   ═══════════════════════════════════════════════════ */
+function renderCards(){
+  let eqs=S.equips;
+  if(S.catId){
+    const ids=[S.catId,...getDescendants(S.catId,S.cats)];
+    eqs=eqs.filter(e=>ids.includes(e.catId));
+  }
+  if(!eqs.length){
+    return `<div class="empty">
+      <div class="empty-ico">${S.catId?'📂':'🏭'}</div>
+      <div class="empty-ttl">Ekipman bulunamadı</div>
+      <div class="empty-txt">${S.catId?'Bu kategoriye henüz ekipman eklenmemiş.':'Henüz hiç ekipman eklenmemiş.'}</div>
+      <button class="btn btn-org" onclick="App.openEquipModal(null,'${S.catId||''}')">+ Ekipman Ekle</button>
+    </div>`;
+  }
+  return `<div class="cards-grid">${eqs.sort((a,b)=>a.tagNo.localeCompare(b.tagNo)).map(eqCardHTML).join('')}</div>`;
+}
+
+function eqCardHTML(eq){
+  const cat  = S.cats.find(c=>c.id===eq.catId);
+  const docs = S.docs.filter(d=>d.eqId===eq.id);
+  const fts  = (eq.faults||[]).slice(0,4);
+  const more = (eq.faults||[]).length-fts.length;
+
+  return `<div class="eq-card" onclick="App.selectEquip('${eq.id}')">
+    <div class="eq-card-hdr">
+      <span class="eq-tag">${esc(eq.tagNo)}</span>
+      ${cat?`<span class="eq-cat-badge">${esc(cat.label)}</span>`:''}
+    </div>
+    <div class="eq-card-body">
+      <div class="eq-name${eq.name?'':' none'}">${eq.name?esc(eq.name):'İsim belirtilmemiş'}</div>
+      ${(eq.model||eq.serialNo)?`<div class="chips">
+        ${eq.model   ?`<span class="chip chip-gray">Model: ${esc(eq.model)}</span>`:''}
+        ${eq.serialNo?`<span class="chip chip-gray">SN: ${esc(eq.serialNo)}</span>`:''}
+      </div>`:''}
+      ${fts.length?`<div class="fault-tags">
+        ${fts.map(f=>`<span class="ftag">${esc(f)}</span>`).join('')}
+        ${more>0?`<span class="ftag" style="opacity:.55">+${more}</span>`:''}
+      </div>`:''}
+      <div class="eq-foot">
+        <span class="doc-cnt">📄 ${docs.length} belge</span>
+        <span style="font-size:11px;color:var(--mut)">Detay →</span>
+      </div>
+    </div>
   </div>`;
 }
 
-/* ═══════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════
+   Render: Detail View
+   ═══════════════════════════════════════════════════ */
+function renderDetail(){
+  const eq=S.equips.find(e=>e.id===S.eqId);
+  if(!eq) return '<div class="empty"><div class="empty-ttl">Ekipman bulunamadı</div></div>';
+  const docs=S.docs.filter(d=>d.eqId===eq.id);
+  const catPath=getCatPath(eq.catId,S.cats).map(c=>c.label).join(' › ');
+  const irow=(l,v,mono)=>v?`<div class="irow">
+    <div class="irow-lbl">${l}</div>
+    <div class="irow-val${mono?' ':' plain'}">${esc(v)}</div>
+  </div>`:'';
+
+  const docList=docs.length
+    ? docs.map(d=>`<div class="doc-row" onclick="App.openViewer('${d.id}')">
+        <span class="doc-ico">📄</span>
+        <div class="doc-inf">
+          <div class="doc-nm" title="${esc(d.filename)}">${esc(d.filename)}</div>
+          <div class="doc-meta">${fmtD(d.uploadDate)} · ${d.pages||1} sayfa · ${fmtS(d.size)}</div>
+        </div>
+        <div class="doc-acts">
+          <button class="btn-icon" style="font-size:12px" title="Sil"
+            onclick="event.stopPropagation();App.deleteDoc('${d.id}')">🗑</button>
+        </div>
+      </div>`).join('')
+    : `<div style="padding:28px;text-align:center;color:var(--mut);font-size:13px">Henüz belge yüklenmemiş</div>`;
+
+  return `<div class="detail-wrap">
+    <div class="detail-info-box">
+      <div class="dib-hdr">
+        <div class="dib-tag">${esc(eq.tagNo)}</div>
+        <div class="dib-name">${eq.name?esc(eq.name):'–'}</div>
+      </div>
+      <div class="dib-body">
+        ${irow('Kategori',catPath,false)}
+        ${irow('Model',eq.model,true)}
+        ${irow('Seri No',eq.serialNo,true)}
+        ${(eq.faults||[]).length?`<div class="irow">
+          <div class="irow-lbl">Arıza Tanımları</div>
+          <div class="fault-tags" style="margin-top:5px">
+            ${(eq.faults||[]).map(f=>`<span class="ftag">${esc(f)}</span>`).join('')}
+          </div>
+        </div>`:''}
+      </div>
+    </div>
+
+    <div class="detail-docs-box">
+      <div class="ddb-hdr">
+        <span class="ddb-ttl">Belgeler (${docs.length})</span>
+        <button class="btn btn-org btn-sm" onclick="App.openUploadModal('${eq.id}')">+ Belge Ekle</button>
+      </div>
+      ${docList}
+    </div>
+  </div>`;
+}
+
+/* ═══════════════════════════════════════════════════
+   Render: Search View
+   ═══════════════════════════════════════════════════ */
+function renderSearch(){
+  const q=S.query.toLowerCase().trim();
+  const results=S.equips.filter(eq=>{
+    const docs=S.docs.filter(d=>d.eqId===eq.id);
+    return eq.tagNo.toLowerCase().includes(q)
+      ||(eq.name||'').toLowerCase().includes(q)
+      ||(eq.model||'').toLowerCase().includes(q)
+      ||(eq.serialNo||'').toLowerCase().includes(q)
+      ||(eq.faults||[]).some(f=>f.toLowerCase().includes(q))
+      ||docs.some(d=>(d.textContent||'').toLowerCase().includes(q)||d.filename.toLowerCase().includes(q));
+  }).sort((a,b)=>a.tagNo.localeCompare(b.tagNo));
+
+  const hdr=`<div class="srch-hdr">
+    <h2>Arama: "${esc(S.query)}"</h2>
+    <p>${results.length} ekipman bulundu</p>
+  </div>`;
+  if(!results.length) return hdr+`<div class="empty">
+    <div class="empty-ico">🔍</div>
+    <div class="empty-ttl">Sonuç bulunamadı</div>
+    <div class="empty-txt">Farklı arama terimleri deneyin.</div>
+  </div>`;
+  return hdr+`<div class="cards-grid">${results.map(eqCardHTML).join('')}</div>`;
+}
+
+/* ═══════════════════════════════════════════════════
+   Full Re-render
+   ═══════════════════════════════════════════════════ */
+function rerender(){
+  updateStats();
+  renderTree();
+  renderMainHdr();
+  const body=document.getElementById('mainBody');
+  if(S.view==='detail')      body.innerHTML=renderDetail();
+  else if(S.view==='search') body.innerHTML=renderSearch();
+  else                       body.innerHTML=renderCards();
+}
+
+/* ═══════════════════════════════════════════════════
+   Category & Equipment Select Helpers
+   ═══════════════════════════════════════════════════ */
+function populateCatSel(selId,selectedId){
+  const {roots,map}=buildTree(S.cats);
+  function opts(nodes,depth){
+    return nodes.map(n=>{
+      const indent='  '.repeat(depth*2);
+      const prefix=depth>0?indent+'└ ':'';
+      const lbl=prefix+n.label+(n.code?' ('+n.code+')':'');
+      const sel=n.id===selectedId?'selected':'';
+      return `<option value="${n.id}" ${sel}>${lbl}</option>`
+        +opts(n._ch.map(c=>map[c.id]),depth+1).join('');
+    }).join('');
+  }
+  document.getElementById(selId).innerHTML=
+    `<option value="">— Kategori seçin —</option>`+opts(roots,0);
+}
+
+function populateEqSel(selId,selectedId){
+  const opts=[...S.equips].sort((a,b)=>a.tagNo.localeCompare(b.tagNo))
+    .map(e=>`<option value="${e.id}" ${e.id===selectedId?'selected':''}>`
+      +`${esc(e.tagNo)}${e.name?' – '+esc(e.name):''}</option>`).join('');
+  document.getElementById(selId).innerHTML=`<option value="">— Ekipman seçin —</option>`+opts;
+}
+
+/* ═══════════════════════════════════════════════════
+   Fault Tag Render
+   ═══════════════════════════════════════════════════ */
+function renderFaultTags(){
+  const wrap=document.getElementById('ftagWrap');
+  const inp=document.getElementById('ftagInp');
+  wrap.querySelectorAll('.ftag-item').forEach(el=>el.remove());
+  S.pendingFaults.forEach((f,i)=>{
+    const el=document.createElement('span');
+    el.className='ftag-item';
+    el.innerHTML=`${esc(f)}<button class="ftag-x" onclick="App.removeFault(${i})">×</button>`;
+    wrap.insertBefore(el,inp);
+  });
+}
+
+/* ═══════════════════════════════════════════════════
    App Controller
-   ═══════════════════════════════════════════════════════════ */
-const App = {
+   ═══════════════════════════════════════════════════ */
+const App={
 
-  /* ── Filter & Search ──────────────────────────────────── */
-  filter(tag, el) {
-    State.filter = tag;
-    document.querySelectorAll('.sb-item').forEach(e => e.classList.toggle('on', e.dataset.tag===tag));
-    document.querySelectorAll('.pill').forEach(e => e.classList.toggle('on', e.dataset.tag===tag));
-    renderCards();
+  /* Navigation */
+  toggleCat(id){
+    S.openCats.has(id)?S.openCats.delete(id):S.openCats.add(id);
+    renderTree();
+  },
+  selectCat(id){
+    let cur=S.cats.find(c=>c.id===id);
+    while(cur){S.openCats.add(cur.id);cur=cur.parent?S.cats.find(c=>c.id===cur.parent):null;}
+    S.catId=id; S.eqId=null; S.view='cards'; S.query='';
+    document.getElementById('srchInp').value='';
+    document.getElementById('srchClr').classList.remove('vis');
+    rerender();
+  },
+  selectEquip(id){S.eqId=id;S.view='detail';rerender();},
+  back(){S.eqId=null;S.view='cards';rerender();},
+
+  /* Search */
+  _stmr:null,
+  handleSearch(v){
+    document.getElementById('srchClr').classList.toggle('vis',v.length>0);
+    clearTimeout(this._stmr);
+    this._stmr=setTimeout(()=>{
+      S.query=v; S.view=v.trim()?'search':'cards'; S.eqId=null;
+      renderMainHdr();
+      const body=document.getElementById('mainBody');
+      body.innerHTML=S.view==='search'?renderSearch():renderCards();
+    },180);
+  },
+  clearSearch(){
+    document.getElementById('srchInp').value='';
+    document.getElementById('srchClr').classList.remove('vis');
+    S.query=''; S.view='cards'; rerender();
   },
 
-  _searchTmr: null,
-  search(v) {
-    clearTimeout(this._searchTmr);
-    this._searchTmr = setTimeout(() => { State.query = v; renderCards(); }, 180);
+  /* Equipment Modal */
+  openEquipModal(eqId,catId){
+    const eq=eqId?S.equips.find(e=>e.id===eqId):null;
+    document.getElementById('equipModalTtl').textContent=eq?'Ekipman Düzenle':'Ekipman Ekle';
+    document.getElementById('fId').value     =eq?.id||'';
+    document.getElementById('fTagNo').value  =eq?.tagNo||'';
+    document.getElementById('fName').value   =eq?.name||'';
+    document.getElementById('fModel').value  =eq?.model||'';
+    document.getElementById('fSerial').value =eq?.serialNo||'';
+    S.pendingFaults=[...(eq?.faults||[])];
+    renderFaultTags();
+    populateCatSel('fCatId',eq?.catId||catId||S.catId||'');
+    document.getElementById('equipOverlay').classList.add('show');
+    setTimeout(()=>document.getElementById('fTagNo').focus(),80);
+  },
+  closeEquipModal(){
+    document.getElementById('equipOverlay').classList.remove('show');
+    S.pendingFaults=[];
+  },
+  faultKey(e){
+    if(e.key==='Enter'||e.key===','){
+      e.preventDefault();
+      const v=e.target.value.replace(/,$/,'').trim();
+      if(v&&!S.pendingFaults.includes(v)){S.pendingFaults.push(v);renderFaultTags();}
+      e.target.value='';
+    }
+    if(e.key==='Backspace'&&!e.target.value&&S.pendingFaults.length){
+      S.pendingFaults.pop();renderFaultTags();
+    }
+  },
+  removeFault(i){S.pendingFaults.splice(i,1);renderFaultTags();},
+
+  async saveEquip(){
+    const tagNo=document.getElementById('fTagNo').value.trim().toUpperCase();
+    const catId=document.getElementById('fCatId').value;
+    if(!tagNo){toast('Tag No zorunludur','error');return;}
+    if(!catId){toast('Lütfen kategori seçin','error');return;}
+    const id=document.getElementById('fId').value||uid();
+    const eq={
+      id, tagNo, catId,
+      name:    document.getElementById('fName').value.trim(),
+      model:   document.getElementById('fModel').value.trim(),
+      serialNo:document.getElementById('fSerial').value.trim(),
+      faults:  [...S.pendingFaults],
+    };
+    await IDB.saveEquip(eq);
+    const idx=S.equips.findIndex(e=>e.id===id);
+    if(idx>=0) S.equips[idx]=eq; else S.equips.push(eq);
+    this.closeEquipModal();
+    rerender();
+    toast(idx>=0?'Ekipman güncellendi':'Ekipman eklendi','success');
   },
 
-  /* ── Upload ───────────────────────────────────────────── */
-  openUpload() {
-    State.queue = [];
-    document.getElementById('uplList').innerHTML = '';
-    document.getElementById('uplBtn').style.display = 'none';
+  async deleteEquip(eqId){
+    if(!confirm('Bu ekipmanı ve tüm belgelerini silmek istediğinizden emin misiniz?')) return;
+    for(const d of S.docs.filter(d=>d.eqId===eqId)) await IDB.delDoc(d.id);
+    S.docs=S.docs.filter(d=>d.eqId!==eqId);
+    await IDB.delEquip(eqId);
+    S.equips=S.equips.filter(e=>e.id!==eqId);
+    S.eqId=null; S.view='cards';
+    rerender(); toast('Ekipman silindi','info');
+  },
+
+  /* Upload Modal */
+  openUploadModal(eqId){
+    S.uploadQueue=[]; S.uploadEqId=eqId||null;
+    document.getElementById('uplList').innerHTML='';
+    document.getElementById('uplBtn').style.display='none';
+    populateEqSel('uplEqSel',eqId||'');
     document.getElementById('uploadOverlay').classList.add('show');
   },
-  closeUpload() {
+  closeUploadModal(){
     document.getElementById('uploadOverlay').classList.remove('show');
-    State.queue = [];
+    S.uploadQueue=[]; S.uploadEqId=null;
   },
-  dragOver(e)  { e.preventDefault(); document.getElementById('dropZone').classList.add('over'); },
-  dragLeave(e) { document.getElementById('dropZone').classList.remove('over'); },
-  drop(e) {
+  onUplEqChange(v){S.uploadEqId=v||null;},
+  dragOver(e) {e.preventDefault();document.getElementById('dropZone').classList.add('over');},
+  dragLeave() {document.getElementById('dropZone').classList.remove('over');},
+  drop(e){
     e.preventDefault();
     document.getElementById('dropZone').classList.remove('over');
-    const files = [...e.dataTransfer.files].filter(f => f.name.toLowerCase().endsWith('.pdf'));
-    this._addFiles(files);
+    this._addFiles([...e.dataTransfer.files].filter(f=>f.name.toLowerCase().endsWith('.pdf')));
   },
-  fileSelect(e) { this._addFiles([...e.target.files]); e.target.value=''; },
-  _addFiles(files) {
-    for (const f of files) State.queue.push({ id: uid(), file: f, status: 'pending' });
-    this._renderQueue();
-    document.getElementById('uplBtn').style.display = State.queue.length ? 'inline-flex' : 'none';
+  fileSelect(e){this._addFiles([...e.target.files]);e.target.value='';},
+  _addFiles(files){
+    files.forEach(f=>S.uploadQueue.push({id:uid(),file:f}));
+    this._renderUplList();
+    document.getElementById('uplBtn').style.display=S.uploadQueue.length?'inline-flex':'none';
   },
-  _renderQueue() {
-    document.getElementById('uplList').innerHTML = State.queue.map(item => `
-      <div class="upl-item" id="qi-${item.id}">
-        <span style="font-size:22px">📄</span>
+  _renderUplList(){
+    document.getElementById('uplList').innerHTML=S.uploadQueue.map(item=>`
+      <div class="upl-item" id="ui-${item.id}">
+        <span style="font-size:20px">📄</span>
         <div class="upl-inf">
-          <div class="upl-nm" title="${esc(item.file.name)}">${esc(item.file.name)}</div>
-          <div class="upl-st" id="qs-${item.id}">${fmtSize(item.file.size)} · Hazır</div>
-          <div class="prog"><div class="prog-fill" id="qp-${item.id}" style="width:0%"></div></div>
+          <div class="upl-nm">${esc(item.file.name)}</div>
+          <div class="upl-st" id="us-${item.id}">${fmtS(item.file.size)} · Hazır</div>
+          <div class="prog"><div class="prog-f" id="up-${item.id}" style="width:0%"></div></div>
         </div>
       </div>`).join('');
   },
-  _setProgress(id, txt, pct, done, err) {
-    const s = document.getElementById('qs-'+id);
-    const p = document.getElementById('qp-'+id);
-    if (s) s.textContent = txt;
-    if (p) { p.style.width = pct+'%'; if(done) p.style.background='var(--green)'; if(err) p.style.background='var(--red)'; }
+  _setP(id,txt,pct,done,err){
+    const s=document.getElementById('us-'+id);
+    const p=document.getElementById('up-'+id);
+    if(s) s.textContent=txt;
+    if(p){p.style.width=pct+'%';if(done)p.style.background='var(--grn)';if(err)p.style.background='var(--red)';}
   },
-
-  async processQueue() {
-    const btn = document.getElementById('uplBtn');
-    btn.disabled = true;
-    btn.innerHTML = '<span class="spin"></span> İşleniyor…';
-    let ok = 0, fail = 0;
-
-    for (const item of State.queue) {
-      try {
-        this._setProgress(item.id, 'Metin çıkarılıyor…', 20);
-        const { text, pages } = await PDFReader.extract(item.file);
-        this._setProgress(item.id, 'Metadata çıkarılıyor…', 55);
-        const metadata = MetaX.extract(text, item.file.name);
-        this._setProgress(item.id, 'Kaydediliyor…', 80);
-
-        const doc = {
-          id:          item.id,
-          filename:    item.file.name,
-          uploadDate:  new Date().toISOString(),
-          pages,
-          size:        item.file.size,
-          tagNo:       metadata.primaryTag || 'GENEL',
-          textContent: text.substring(0, 60000),
-          metadata,
-        };
-        await IDB.saveBlob(item.id, item.file);
+  async processUpload(){
+    if(!S.uploadEqId){toast('Lütfen ekipman seçin','error');return;}
+    if(!S.uploadQueue.length){toast('Lütfen dosya seçin','error');return;}
+    const btn=document.getElementById('uplBtn');
+    btn.disabled=true;
+    btn.innerHTML='<span class="spin"></span> İşleniyor…';
+    let ok=0,fail=0;
+    for(const item of S.uploadQueue){
+      try{
+        this._setP(item.id,'Metin çıkarılıyor…',30);
+        const {text,pages}=await PDFReader.extract(item.file);
+        this._setP(item.id,'Kaydediliyor…',75);
+        const doc={id:item.id,eqId:S.uploadEqId,filename:item.file.name,
+          uploadDate:new Date().toISOString(),pages,size:item.file.size,
+          textContent:text.substring(0,60000)};
+        await IDB.saveBlob(item.id,item.file);
         await IDB.saveDoc(doc);
-        State.docs.push(doc);
-        this._setProgress(item.id, '✅ Tamamlandı', 100, true);
+        S.docs.push(doc);
+        this._setP(item.id,'✅ Tamamlandı',100,true);
         ok++;
-      } catch (e) {
+      }catch(e){
         console.error(e);
-        this._setProgress(item.id, '❌ Hata: '+e.message, 0, false, true);
+        this._setP(item.id,'❌ '+e.message,0,false,true);
         fail++;
       }
     }
-
-    renderAll();
-    btn.disabled = false;
-    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> Yükle ve İşle';
-    State.queue = [];
-
-    if (ok)   toast(`${ok} belge başarıyla yüklendi`, 'success');
-    if (fail) toast(`${fail} belge işlenemedi`, 'error');
-    if (ok)   this.closeUpload();
-  },
-
-  /* ── Document Viewer ──────────────────────────────────── */
-  async openDoc(docId) {
-    const doc = State.docs.find(d => d.id === docId);
-    if (!doc) return;
-    State.viewDocId = docId;
-
-    document.getElementById('viewerTitle').textContent = doc.filename;
-    document.getElementById('viewerOverlay').classList.add('show');
-
-    // Revoke previous
-    if (State.blobUrl) { URL.revokeObjectURL(State.blobUrl); State.blobUrl = null; }
-
-    const frame = document.getElementById('pdfFrame');
-    const blob  = await IDB.getBlob(docId);
-    if (blob) {
-      State.blobUrl = URL.createObjectURL(blob);
-      frame.src = State.blobUrl;
-    } else {
-      frame.srcdoc = '<p style="padding:20px;font-family:sans-serif;color:#666">PDF dosyası bulunamadı.</p>';
+    btn.disabled=false; btn.innerHTML='Yükle'; S.uploadQueue=[];
+    if(ok) toast(`${ok} belge yüklendi`,'success');
+    if(fail) toast(`${fail} belge işlenemedi`,'error');
+    if(ok){
+      this.closeUploadModal();
+      if(S.view==='detail'&&S.eqId===S.uploadEqId){
+        document.getElementById('mainBody').innerHTML=renderDetail();
+      } else { rerender(); }
     }
-    this._renderViewerSide(doc);
   },
 
-  _renderViewerSide(doc) {
-    const m = doc.metadata || {};
-    const row = (lbl, val) => val ? `
-      <div class="vs-row">
-        <div class="vs-lbl">${lbl}</div>
-        <div class="vs-val">${esc(val)}</div>
-      </div>` : '';
-
-    document.getElementById('viewerSide').innerHTML = `
-      <div class="vs-sec">
-        <div class="vs-sec-ttl">Belge Bilgisi</div>
-        ${row('Dosya Adı',      doc.filename)}
-        ${row('Yükleme Tarihi', fmtDate(doc.uploadDate))}
-        ${row('Boyut',          fmtSize(doc.size))}
-        ${row('Sayfa Sayısı',   String(doc.pages||'–'))}
-      </div>
-      <div class="vs-sec">
-        <div class="vs-sec-ttl">Ekipman Bilgisi</div>
-        ${row('Tag No',         m.primaryTag)}
-        ${row('Ekipman Adı',    m.equipmentName)}
-        ${row('Model',          m.model)}
-        ${row('Seri No',        m.serialNo)}
-        ${row('Üretici',        m.manufacturer)}
-        ${m.tagNos && m.tagNos.length > 1 ? row('Tüm Tag\'lar', m.tagNos.join(', ')) : ''}
-      </div>
-      ${(m.alarmH||m.alarmL||m.alarmHH||m.alarmLL||m.setpoint) ? `
-      <div class="vs-sec">
-        <div class="vs-sec-ttl">⚠ Alarm / Set Değerleri</div>
-        ${row('HH Alarm',      m.alarmHH)}
-        ${row('Yüksek Alarm',  m.alarmH)}
-        ${row('Düşük Alarm',   m.alarmL)}
-        ${row('LL Alarm',      m.alarmLL)}
-        ${row('Set Noktası',   m.setpoint)}
-        ${row('Ölçüm Aralığı', m.range)}
-        ${row('Birim',         m.unit)}
-      </div>` : ''}
-      ${doc.textContent ? `
-      <div class="vs-sec">
-        <div class="vs-sec-ttl">Metin Önizleme</div>
-        <div class="txt-preview">${esc(doc.textContent.substring(0,1200))}${doc.textContent.length>1200?'…':''}</div>
-      </div>` : ''}`;
+  /* Category Modal */
+  openCatModal(parentId){
+    document.getElementById('catParentId').value=parentId||'';
+    const parent=parentId?S.cats.find(c=>c.id===parentId):null;
+    document.getElementById('catModalTtl').textContent=parent?'Alt Kategori Ekle':'Kategori Ekle';
+    document.getElementById('catParentLbl').textContent=parent?parent.label:'Kök seviye';
+    document.getElementById('catName').value='';
+    document.getElementById('catCode').value='';
+    document.getElementById('catOverlay').classList.add('show');
+    setTimeout(()=>document.getElementById('catName').focus(),80);
+  },
+  closeCatModal(){document.getElementById('catOverlay').classList.remove('show');},
+  async saveCat(){
+    const label=document.getElementById('catName').value.trim();
+    if(!label){toast('Kategori adı zorunludur','error');return;}
+    const parent=document.getElementById('catParentId').value||null;
+    const code=document.getElementById('catCode').value.trim()||null;
+    const cat={id:uid(),label,parent,code};
+    await IDB.saveCat(cat);
+    S.cats.push(cat);
+    if(parent) S.openCats.add(parent);
+    this.closeCatModal();
+    rerender(); toast('Kategori eklendi','success');
   },
 
-  closeViewer() {
+  /* PDF Viewer */
+  async openViewer(docId){
+    const doc=S.docs.find(d=>d.id===docId);
+    if(!doc) return;
+    S.viewDocId=docId;
+    document.getElementById('viewerTtl').textContent=doc.filename;
+    document.getElementById('viewerOverlay').classList.add('show');
+    if(S.blobUrl){URL.revokeObjectURL(S.blobUrl);S.blobUrl=null;}
+    const blob=await IDB.getBlob(docId);
+    if(blob){S.blobUrl=URL.createObjectURL(blob);document.getElementById('pdfFrame').src=S.blobUrl;}
+    const eq=S.equips.find(e=>e.id===doc.eqId);
+    const row=(l,v)=>v?`<div class="vs-row"><div class="vs-lbl">${l}</div><div class="vs-val">${esc(v)}</div></div>`:'';
+    document.getElementById('viewerSide').innerHTML=`
+      <div class="vs-sec">
+        <div class="vs-ttl">Belge</div>
+        ${row('Dosya Adı',doc.filename)}
+        ${row('Tarih',fmtD(doc.uploadDate))}
+        ${row('Boyut',fmtS(doc.size))}
+        ${row('Sayfa',String(doc.pages||'–'))}
+      </div>
+      ${eq?`<div class="vs-sec">
+        <div class="vs-ttl">Ekipman</div>
+        ${row('Tag No',eq.tagNo)}
+        ${row('Adı',eq.name)}
+        ${row('Model',eq.model)}
+        ${row('Seri No',eq.serialNo)}
+        ${(eq.faults||[]).length?`<div class="vs-row"><div class="vs-lbl">Arıza Tanımları</div>
+          <div class="fault-tags" style="margin-top:4px">
+            ${(eq.faults||[]).map(f=>`<span class="ftag">${esc(f)}</span>`).join('')}
+          </div></div>`:''}
+      </div>`:''}
+      ${doc.textContent?`<div class="vs-sec">
+        <div class="vs-ttl">Metin Önizleme</div>
+        <div class="txt-prev">${esc(doc.textContent.substring(0,1000))}${doc.textContent.length>1000?'…':''}</div>
+      </div>`:''}`;
+  },
+  closeViewer(){
     document.getElementById('viewerOverlay').classList.remove('show');
-    if (State.blobUrl) { URL.revokeObjectURL(State.blobUrl); State.blobUrl = null; }
-    document.getElementById('pdfFrame').src = '';
-    State.viewDocId = null;
+    if(S.blobUrl){URL.revokeObjectURL(S.blobUrl);S.blobUrl=null;}
+    document.getElementById('pdfFrame').src='';
+    S.viewDocId=null;
   },
-
-  async download() {
-    if (!State.viewDocId) return;
-    const doc  = State.docs.find(d => d.id === State.viewDocId);
-    const blob = await IDB.getBlob(State.viewDocId);
-    if (!blob) { toast('Dosya bulunamadı','error'); return; }
-    const url = URL.createObjectURL(blob);
-    const a = Object.assign(document.createElement('a'), { href: url, download: doc.filename });
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(url), 1500);
+  async downloadDoc(){
+    if(!S.viewDocId) return;
+    const doc=S.docs.find(d=>d.id===S.viewDocId);
+    const blob=await IDB.getBlob(S.viewDocId);
+    if(!blob){toast('Dosya bulunamadı','error');return;}
+    const url=URL.createObjectURL(blob);
+    Object.assign(document.createElement('a'),{href:url,download:doc.filename}).click();
+    setTimeout(()=>URL.revokeObjectURL(url),1500);
   },
-
-  /* ── Delete ───────────────────────────────────────────── */
-  async delDoc(docId) {
-    if (!confirm('Bu belgeyi silmek istediğinizden emin misiniz?')) return;
+  async deleteDoc(docId){
+    if(!confirm('Bu belgeyi silmek istediğinizden emin misiniz?')) return;
     await IDB.delDoc(docId);
-    State.docs = State.docs.filter(d => d.id !== docId);
-    renderAll();
-    toast('Belge silindi', 'info');
+    S.docs=S.docs.filter(d=>d.id!==docId);
+    document.getElementById('mainBody').innerHTML=renderDetail();
+    updateStats(); toast('Belge silindi','info');
   },
 };
 
-/* ═══════════════════════════════════════════════════════════
-   Close modals on overlay click
-   ═══════════════════════════════════════════════════════════ */
-document.getElementById('uploadOverlay').addEventListener('click', e => {
-  if (e.target === e.currentTarget) App.closeUpload();
-});
-document.getElementById('viewerOverlay').addEventListener('click', e => {
-  if (e.target === e.currentTarget) App.closeViewer();
-});
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { App.closeViewer(); App.closeUpload(); }
+/* ─── Overlay close on backdrop click ──────────────── */
+[['equipOverlay',  ()=>App.closeEquipModal()],
+ ['uploadOverlay', ()=>App.closeUploadModal()],
+ ['catOverlay',    ()=>App.closeCatModal()],
+ ['viewerOverlay', ()=>App.closeViewer()],
+].forEach(([id,fn])=>{
+  document.getElementById(id).addEventListener('click',e=>{if(e.target===e.currentTarget)fn();});
 });
 
-/* ═══════════════════════════════════════════════════════════
+/* ─── Keyboard ──────────────────────────────────────── */
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    App.closeViewer(); App.closeEquipModal();
+    App.closeUploadModal(); App.closeCatModal();
+  }
+});
+
+/* ═══════════════════════════════════════════════════
    Boot
-   ═══════════════════════════════════════════════════════════ */
-(async () => {
+   ═══════════════════════════════════════════════════ */
+(async()=>{
   await IDB.init();
-  State.docs = await IDB.getAllDocs();
-  renderAll();
-})().catch(console.error);
+  const [cats,equips,docs]=await Promise.all([
+    IDB.getAllCats(), IDB.getAllEquips(), IDB.getAllDocs(),
+  ]);
+
+  if(cats.length===0){
+    for(const c of DEFAULT_CATS) await IDB.saveCat(c);
+    S.cats=[...DEFAULT_CATS];
+  } else {
+    S.cats=cats;
+    // ensure default cats exist (migration)
+    for(const dc of DEFAULT_CATS){
+      if(!S.cats.find(c=>c.id===dc.id)){
+        await IDB.saveCat(dc); S.cats.push(dc);
+      }
+    }
+  }
+  S.equips=equips; S.docs=docs;
+  rerender();
+})().catch(err=>{console.error(err);toast('Başlatma hatası: '+err.message,'error');});
 </script>
 </body>
 </html>
